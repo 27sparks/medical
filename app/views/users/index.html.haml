@@ -7,8 +7,9 @@
     %th Email
     %th
   -@users.each do |user|
-    %td= user.id
-    %td= link_to user.name, user_path(user.id)
-    %td= user.email
-    %td
-      = link_to "bearbeiten", edit_user_path(user.id)
+    %tr
+      %td= user.id
+      %td= link_to user.name, user_path(user.id)
+      %td= user.email
+      %td
+        = link_to "bearbeiten", edit_user_path(user.id)

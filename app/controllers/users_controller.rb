@@ -19,9 +19,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      flash[:success] = "Herzlich willkommen in Deinem Schmerztagebuch!"
       redirect_to @user
     else
       render 'new'
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.save
+      flash[:success] = "Aenderungen wurden gespeichert"
+      redirect_to @user
+    else
+      flash[:error] = "Fehler, Aenderungen konnten nicht gespeichert werden"
+      render 'edit'
     end
   end
 end

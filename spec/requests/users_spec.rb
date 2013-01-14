@@ -38,7 +38,7 @@ describe "Users" do
 
     before { visit register_path }
 
-    let(:submit) { "Registrieren" }
+    let(:submit) { "Speichern" }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -59,4 +59,17 @@ describe "Users" do
       end
     end
   end
+
+  describe "edit user" do
+    before { visit edit_user_path(user.id) }
+    let(:submit) { "Speichern" }
+
+    describe "with invalid information" do
+      it "should not update a user" do
+        expect { click_button submit }.not_to change(User, :count)
+      end
+    end
+
+  end
+
 end

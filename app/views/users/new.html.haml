@@ -1,19 +1,4 @@
 - provide(:title, 'Registrieren')
 %h1 Registrieren
 
-= form_for(@user) do |f|
-  = f.label :name
-  = f.text_field :name
-
-  = f.label :email
-  = f.text_field :email
-
-  = f.label :password
-  = f.password_field :password
-
-  = f.label :password_confirmation, "Confirm"
-  = f.password_field :password_confirmation
-
-  = f.submit "Registrieren", class: "btn btn-primary btn-large"
-
-
+= render "form"
