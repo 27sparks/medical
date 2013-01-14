@@ -1,0 +1,4 @@
+- provide(:title, @user.name)
+%h1= @user.name
+%p= @user.email
+=link_to "Benutzerdaten bearbeiten", edit_user_path(@user.id)
