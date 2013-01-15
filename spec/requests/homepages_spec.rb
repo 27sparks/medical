@@ -5,5 +5,20 @@ describe "Homepages" do
   subject { page }
 
   it { should have_content('Schmerztagebuch') }
-  it { should have_selector("a", text: "Neuer Eintrag") }
+
+  describe  "if there is no user logged in" do
+    it { should have_selector("h1", text: 'Log in') }
+  end
+
+  describe "if there is a user logged in" do
+
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      fill_in "Email",    with: user.email
+      fill_in "Password", with: user.password
+      click_button "Log in"
+    end
+
+    it { should have_content(user.name)}
+  end
 end

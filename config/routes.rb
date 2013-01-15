@@ -16,6 +16,7 @@ Medical::Application.routes.draw do
   #   resources :products
   resources :users
   resources :pains
+  resources :sessions, only: [:new, :create, :destroy]
 
   # Sample resource route with options:
   #   resources :products do
@@ -52,8 +53,10 @@ Medical::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+  match 'login' => 'sessions#new'
+  match 'logout' => 'sessions#destroy', via: :delete
   match 'register' => 'users#new'
-  root :to => 'pains#index'
+  root :to => 'sessions#new'
 
   # See how all your routes lay out with "rake routes"
 

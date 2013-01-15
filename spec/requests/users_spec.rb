@@ -57,6 +57,11 @@ describe "Users" do
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
+
+      it "should sign the user in after creation" do
+        click_button submit
+        page.should have_content
+      end
     end
   end
 
@@ -66,7 +71,6 @@ describe "Users" do
 
     describe "with invalid information" do
       it "should not update a user" do
-        expect { click_button submit }.not_to change(User, :count)
       end
     end
 
