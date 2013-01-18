@@ -9,19 +9,15 @@ $grayMediumLight: #eaeaea;
 html {
   overflow-y: scroll;
 }
-
 body {
   padding-top: 60px;
 }
-
 section {
   overflow: auto;
 }
-
 textarea {
   resize: vertical;
 }
-
 .center {
   text-align: center;
   h1 {
@@ -68,8 +64,8 @@ p {
   line-height: 1;
 }
 
-#logo:hover {
-  color: #fff;
+#logo:hover a{
+  color: #0077bb;
   text-decoration: none;
 }
 
