@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       log_in @user
-      flash[:success] = "Herzlich willkommen in Deinem Schmerztagebuch!"
+      flash[:success] = t(:welcome_to_your_medical_diary)
       redirect_to @user
     else
       render 'new'
@@ -29,11 +29,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.save
-      flash[:success] = "Aenderungen wurden gespeichert"
+    if @user.update_attributes(params[:user])
+      flash[:success] = t(:updated_user)
+      log_in @user
       redirect_to @user
     else
-      flash[:error] = "Fehler, Aenderungen konnten nicht gespeichert werden"
+      flash[:error] = t(:error_could_not_save_data)
       render 'edit'
     end
   end

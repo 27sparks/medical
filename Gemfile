@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'thin'
 gem 'rails', '3.2.11'
 gem 'bootstrap-sass', '2.1'
 gem 'haml'
 gem 'bcrypt-ruby'
-
+gem 'cancan'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
