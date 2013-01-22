@@ -5,25 +5,21 @@ describe "Users" do
   let(:user) { FactoryGirl.create(:user) }
   subject { page }
 
-  describe "users index page" do
-    before { visit users_path }
-    # it { should have_content(user.name) }
-    # it { should have_content(user.email) }
-    # it { should have_selector("a", text: "bearbeiten") }
-    # it { should have_selector("title", text: "Alle Benutzer")}
-  end
-
-
   describe "user page" do
-    before  { visit user_path(user.id) }
+    before do
+      valid_log_in(user)
+      visit user_path(user.id)
+    end
     it { should have_selector("h1", text: user.name) }
     it { should have_selector("a", text: "Benutzerdaten bearbeiten") }
     it { should have_selector("title", text: user.name)}
-
   end
 
   describe "edit user page" do
-    before { visit edit_user_path(user.id) }
+    before do
+      valid_log_in(user)
+      visit edit_user_path(user.id)
+    end
     it { should have_selector("h1", text: "Benutzerdaten von #{user.name} bearbeiten") }
     it { should have_selector("title", text: "Benutzerdaten von #{user.name} bearbeiten")}
   end
@@ -32,14 +28,15 @@ describe "Users" do
     before { visit register_path }
     it { should have_selector('h1',    text: 'Registrieren') }
     it { should have_selector('title', text: 'Registrieren') }
+    it { should have_selector('label', text: 'Name') }
+    it { should have_selector('input', id: 'user_name') }
+    it { should have_selector('input', id: 'user_email') }
+    it { should_not have_selector('select', id: 'user_role') }
   end
 
   describe "register" do
-
     before { visit register_path }
-
     let(:submit) { "Speichern" }
-
     describe "with invalid information" do
       it "should not create a user" do
         expect { click_button submit }.not_to change(User, :count)
@@ -67,7 +64,10 @@ describe "Users" do
 
   describe "edit user" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit edit_user_path(user) }
+    before do
+      valid_log_in(user)
+      visit edit_user_path(user)
+    end
 
     describe "page" do
       it { should have_selector('h1',    text: "Benutzerdaten von #{user.name} bearbeiten") }
@@ -98,6 +98,23 @@ describe "Users" do
       specify { user.reload.email.should == new_email }
     end
 
+  end
+
+  describe "as admin user" do
+    let(:user) { FactoryGirl.create(:user, role: "admin") }
+    subject { page }
+
+    describe "users index page" do
+      before do
+        valid_log_in(user)
+        visit users_path
+      end
+      it { should have_content(user.name) }
+      it { should have_content(user.email) }
+      it { should have_selector("a", text: "edit") }
+      it { should have_selector("a", text: "delete") }
+      it { should have_selector("title", text: "Alle Benutzer")}
+    end
   end
 
 end

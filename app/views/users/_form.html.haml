@@ -5,6 +5,10 @@
   = f.label :email
   = f.text_field :email
 
+  - if current_user != nil
+    = f.label :role
+    = f.select :role, [:admin, :member]
+
   = f.label :password
   = f.password_field :password
 

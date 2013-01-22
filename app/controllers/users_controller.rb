@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
 
   def index
     @users = User.all
@@ -37,5 +38,11 @@ class UsersController < ApplicationController
       flash[:error] = t(:error_could_not_save_data)
       render 'edit'
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted."
+    redirect_to users_url
   end
 end

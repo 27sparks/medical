@@ -1,15 +1,18 @@
-- provide(:title, "Alle Benutzer")
-%h1 Benutzerliste
+- provide(:title, t(:all_users))
+%h1= t(:all_users)
 %table
   %tr
-    %th ID
-    %th Name
-    %th Email
+    %th= t(:id)
+    %th= t(:name)
+    %th= t(:email)
+    %th= t(:role)
     %th
   -@users.each do |user|
     %tr
       %td= user.id
       %td= link_to user.name, user_path(user.id)
       %td= user.email
+      %td= user.role
       %td
-        = link_to "bearbeiten", edit_user_path(user.id)
+        = link_to t(:edit), edit_user_path(user.id)
+        = link_to t(:delete), user, method: :delete, data: { confirm: t(:are_you_sure?) }

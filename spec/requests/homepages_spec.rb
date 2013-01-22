@@ -4,7 +4,7 @@ describe "Homepages" do
   before { visit root_path }
   subject { page }
 
-  it { should have_content('Schmerztagebuch') }
+  it { should have_content('Medical Diary') }
 
   describe  "if there is no user logged in" do
     it { should have_selector("h1", text: 'Log in') }
