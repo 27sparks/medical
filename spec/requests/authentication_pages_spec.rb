@@ -28,7 +28,7 @@ describe "AuthenticationPages" do
 
       it { should have_selector('title', text: user.name) }
       it { should have_link('Profil', href: user_path(user)) }
-      it { should have_link('Einstellungen', href: edit_user_path(user)) }
+      it { should have_link( user.name , href: edit_user_path(user)) }
       it { should have_link('Log out', href: logout_path) }
       it { should_not have_link('Log in', href: login_path) }
 

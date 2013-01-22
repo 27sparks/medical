@@ -6,9 +6,11 @@
         %ul.nav.pull-right
           %li= link_to "Home", root_path
           - if logged_in?
+            -if can? :read, current_user
+              %li= link_to "Profil", user_path(current_user)
+            %li= link_to "Log out", logout_path, method: "delete"
             - if can? :edit, current_user
               %li= link_to current_user.name, edit_user_path(current_user)
-            %li= link_to "Log out", logout_path, method: "delete"
             - if current_user.role == 'admin'
               %li= link_to "(admin)", users_path
 
