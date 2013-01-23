@@ -1,2 +1,0 @@
-module PainsHelper
-end
