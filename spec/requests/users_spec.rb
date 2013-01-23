@@ -27,7 +27,7 @@ describe "Users" do
   describe "as logged in user" do
     before { valid_log_in(user) }
 
-    describe "user page" do
+    describe "going to user page" do
       before { visit user_path(user.id) }
       it { should have_selector("h1", text: user.name) }
       it { should have_link("Benutzerdaten bearbeiten", href: edit_user_path(user)) }
@@ -38,15 +38,15 @@ describe "Users" do
       before { visit users_path }
       it { should have_selector('div.alert.alert-error') }
     end
-  end
 
-  describe "edit user page" do
-    before do
-      valid_log_in(user)
-      visit edit_user_path(user.id)
+    describe "going to edit user page" do
+      before do
+        valid_log_in(user)
+        visit edit_user_path(user.id)
+      end
+      it { should have_selector("h1", text: "Benutzerdaten von #{user.name} bearbeiten") }
+      it { should have_selector("title", text: "Benutzerdaten von #{user.name} bearbeiten")}
     end
-    it { should have_selector("h1", text: "Benutzerdaten von #{user.name} bearbeiten") }
-    it { should have_selector("title", text: "Benutzerdaten von #{user.name} bearbeiten")}
   end
 
   describe "register page" do
