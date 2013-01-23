@@ -15,7 +15,6 @@ Medical::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :users
-  resources :pains
   resources :sessions, only: [:new, :create, :destroy]
 
   # Sample resource route with options:

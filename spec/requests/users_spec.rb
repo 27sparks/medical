@@ -5,14 +5,39 @@ describe "Users" do
   let(:user) { FactoryGirl.create(:user) }
   subject { page }
 
-  describe "user page" do
-    before do
-      valid_log_in(user)
-      visit user_path(user.id)
+  describe "as not logged in guest" do
+
+    describe "visiting the users index page" do
+      before { visit users_path }
+      it { should have_selector('div.alert.alert-error') }
     end
-    it { should have_selector("h1", text: user.name) }
-    it { should have_selector("a", text: "Benutzerdaten bearbeiten") }
-    it { should have_selector("title", text: user.name)}
+
+    describe "visiting a users show page" do
+      before { visit user_path(user) }
+      it {should have_selector('div.alert.alert-error') }
+    end
+
+    describe "visiting a users edit page" do
+      before { visit edit_user_path(user) }
+      it {should have_selector('div.alert.alert-error') }
+    end
+  end
+
+
+  describe "as logged in user" do
+    before { valid_log_in(user) }
+
+    describe "user page" do
+      before { visit user_path(user.id) }
+      it { should have_selector("h1", text: user.name) }
+      it { should have_link("Benutzerdaten bearbeiten", href: edit_user_path(user)) }
+      it { should have_selector("title", text: user.name)}
+    end
+
+    describe "going to users index page" do
+      before { visit users_path }
+      it { should have_selector('div.alert.alert-error') }
+    end
   end
 
   describe "edit user page" do
@@ -111,9 +136,9 @@ describe "Users" do
       end
       it { should have_content(user.name) }
       it { should have_content(user.email) }
-      it { should have_selector("a", text: "edit") }
-      it { should have_selector("a", text: "delete") }
-      it { should have_selector("title", text: "Alle Benutzer")}
+      it { should have_link("", href: edit_user_path(user)) }
+      it { should have_link("", action: "user#destroy") }
+      it { should have_selector("title", text: "All Users")}
     end
   end
 
