@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 2em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -105,12 +105,16 @@ footer ul li {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   padding: 10px;
   margin-bottom: 15px;
 }
 
 input {
   height: auto !important;
+}
+
+.btn {
+  margin-top: 20px;
+  display: block;
 }
 

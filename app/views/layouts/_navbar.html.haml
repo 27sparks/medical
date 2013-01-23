@@ -4,7 +4,6 @@
       #logo= link_to "Medical Diary", root_path
       %nav
         %ul.nav.pull-right
-          %li= link_to "Home", root_path
           - if logged_in?
             -if can? :read, current_user
               %li= link_to "Profil", user_path(current_user)
