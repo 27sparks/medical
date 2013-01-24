@@ -1,0 +1,9 @@
+= form_for(@pain) do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :bodypart
+  = f.select :bodypart, [:kopf, :nacken, :rumpf, :arme, :beine]
+  
+  = f.submit "Speichern", class: "btn btn-primary btn-large"
+  

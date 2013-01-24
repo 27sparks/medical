@@ -1,1 +1,15 @@
-%h1 Heute eingetragene Schmerzen
+%h1 Vorhandene Schmerzarten
+%table
+  %tr
+    %th= t(:id)
+    %th= t(:name)
+    %th= t(:bodypart)
+    %th
+  -@pains.each do |pain|
+    %tr
+      %td= pain.id
+      %td= link_to pain.name, pain_path(pain.id)
+      %td= pain.bodypart
+      %td
+        = link_to "edit", edit_pain_path(pain.id)
+        = link_to t(:delete), pain, method: :delete

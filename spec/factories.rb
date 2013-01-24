@@ -7,11 +7,8 @@ FactoryGirl.define do
     role "member"
   end
 
-  factory :admin_user do
-    name     "Admin Nordmeyer"
-    email    "admin@nordmeyer.name"
-    password "foobar"
-    password_confirmation "foobar"
-    role "admin"
+  factory :pain do
+    name     "My Pain Kind"
+    bodypart    "head"
   end
 end
