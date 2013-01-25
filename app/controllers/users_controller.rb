@@ -15,9 +15,8 @@ class UsersController < ApplicationController
 
   def create
     if @user.save
-      log_in @user
       flash[:success] = t(:welcome_to_your_medical_diary)
-      redirect_to @user
+      log_in @user
     else
       render 'new'
     end

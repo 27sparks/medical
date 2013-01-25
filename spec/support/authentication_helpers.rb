@@ -5,4 +5,8 @@ module AuthenticationHelpers
     fill_in "Password", with: user.password
     click_button "Log in"
   end
+
+  def log_out
+    click_button "Log out"
+  end
 end
