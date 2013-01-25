@@ -29,15 +29,6 @@ describe "Users" do
     end
   end
 
-  describe "edit user page" do
-    before do
-      valid_log_in(user)
-      visit edit_user_path(user.id)
-    end
-    it { should have_selector("h1", text: "Benutzerdaten von #{user.name} bearbeiten") }
-    it { should have_selector("title", text: "Benutzerdaten von #{user.name} bearbeiten")}
-  end
-
   describe "register page" do
     before { visit register_path }
     it { should have_selector('h1',    text: 'Registrieren') }
@@ -84,8 +75,8 @@ describe "Users" do
     end
 
     describe "page" do
-      it { should have_selector('h1',    text: "Benutzerdaten von #{user.name} bearbeiten") }
-      it { should have_selector('title', text: "Benutzerdaten von #{user.name} bearbeiten") }
+      it { should have_selector('h1',    text: "#{user.name}") }
+      it { should have_selector('title', text: "#{user.name}") }
     end
 
     describe "with invalid information" do

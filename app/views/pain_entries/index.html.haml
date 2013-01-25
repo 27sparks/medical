@@ -1,0 +1,22 @@
+%h1 Listing pain entries
+
+%table.table
+  %thead
+    %tr
+      %th Pain
+      %th User
+      %th Value
+      %th Comment
+      %th 
+      %th 
+      %th 
+  %tbody
+    - @pain_entries.each do |pain_entry|
+      %tr
+        %td= pain_entry.pain_id
+        %td= pain_entry.user.name
+        %td= pain_entry.value
+        %td= pain_entry.comment
+        %td= link_to 'Show', pain_entry
+        %td= link_to 'Edit', edit_pain_entry_path(pain_entry)
+        %td= link_to 'Destroy', pain_entry, method: :delete, data: { confirm: 'Are you sure?' }

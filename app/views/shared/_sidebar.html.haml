@@ -8,7 +8,7 @@
       %th
       
   %tbody
-    - @user.pains.each do |pain|
+    - current_user.pains.each do |pain|
       %tr  
         %td=link_to pain.name, pain_path(pain)
         %td=link_to t(:edit), edit_pain_path(pain)
