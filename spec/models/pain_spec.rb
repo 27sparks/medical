@@ -3,20 +3,18 @@ require 'spec_helper'
 describe Pain do
 
   before do
-    @pain = Pain.new(name: "Example", bodypart: "rumpf")
+    @user = User.create(name: "Example User", email: "user@example.co", password: "foobar", password_confirmation: "foobar")
+    @pain = @user.pains.create(name: "Example", bodypart: "rumpf", description: "bla bla")
   end
 
-  after do
-    @pain.delete
-  end
+
   
   subject { @pain }
-
   it { should respond_to(:name) }
   it { should respond_to(:bodypart) }
-  
+  it { should respond_to(:user_id) }
+  it { should respond_to(:description) }
   it { should be_valid }
-  
   describe "when name is not present" do
     before { @pain.name = " " }
     it { should_not be_valid }

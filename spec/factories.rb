@@ -10,5 +10,6 @@ FactoryGirl.define do
   factory :pain do
     name     "My Pain Kind"
     bodypart    "head"
+    description "alles"
   end
 end

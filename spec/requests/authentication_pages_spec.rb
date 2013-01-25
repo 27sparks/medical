@@ -6,14 +6,14 @@ describe "AuthenticationPages" do
 
   describe "login page" do
     before { visit login_path }
-
+    
     it { should have_selector('h1',    text: 'Log in') }
     it { should have_selector('title', text: 'Log in') }
 
     describe "with invalid information" do
       before { click_button "Log in" }
 
-      it { should have_selector('title', text: 'Log in') }
+      it { should have_selector('title', text: 'Log in') }      
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 
       describe "after visiting another page" do
@@ -27,7 +27,7 @@ describe "AuthenticationPages" do
       before { valid_log_in(user) }
 
       it { should have_selector('title', text: user.name) }
-      it { should have_link( user.name , href: edit_user_path(user)) }
+      it { should have_link( "Einstellungen" , href: edit_user_path(user)) }
       it { should have_link('Log out', href: logout_path) }
       it { should_not have_link('Log in', href: login_path) }
 

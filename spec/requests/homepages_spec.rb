@@ -15,5 +15,6 @@ describe "Homepages" do
     before { valid_log_in(user) }
 
     it { should have_content(user.name)}
+    it { should have_link("Neue Schmerzart", href: new_pain_path) }
   end
 end

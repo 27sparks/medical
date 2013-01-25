@@ -5,5 +5,8 @@
   = f.label :bodypart
   = f.select :bodypart, [:kopf, :nacken, :rumpf, :arme, :beine]
   
+  = f.label :description
+  = f.text_area :description
+  
   = f.submit "Speichern", class: "btn btn-primary btn-large"
   

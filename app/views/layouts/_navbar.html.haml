@@ -1,19 +1,42 @@
 %header.navbar.navbar-fixed-top
   .navbar-inner
     .container
-      #logo= link_to "Medical Diary", root_path
+      #logo= link_to "Medical Diary", root_path, id: "Home"
       %nav
         %ul.nav.pull-right
-          %li= link_to "Home", root_path
           - if logged_in?
-            -if can? :read, current_user
-              %li= link_to "Profil", user_path(current_user)
-            %li= link_to "Log out", logout_path, method: "delete"
-            - if can? :edit, current_user
-              %li= link_to current_user.name, edit_user_path(current_user)
+            %li#fat-menu.dropdown  
+              %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
+                Neuer Eintrag
+                %b.caret
+              %ul.dropdown-menu.fat-menu
+                %li= link_to "Schmerz"
+                %li= link_to "Ernährung"
+                %li= link_to "Stimmung"
+                %li= link_to "Tagesdaten"
+                %li.divider
+                -if can? :create, Pain
+                  %li= link_to "Neue Schmerzart", new_pain_path
+                         
             - if current_user.role == 'admin'
-              %li= link_to "(admin)", users_path
-
+              %li#admin-menu.dropdown
+                %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
+                  Admin
+                  %b.caret
+                %ul.dropdown-menu.dropdown-menu
+                  %li= link_to "Benutzer", users_path
+                  %li= link_to "Schmerzarten", pains_path
+            %li#fat-menu.dropdown  
+              %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
+                Account
+                %b.caret
+              %ul.dropdown-menu.fat-menu
+                -if can? :read, current_user
+                  %li= link_to "Profil", user_path(current_user)
+                - if can? :edit, current_user
+                  %li= link_to "Einstellungen", edit_user_path(current_user)
+                %li.divider
+                %li= link_to "Log out", logout_path, method: "delete"
           - else
             %li= link_to "Registrieren", register_path
             %li= link_to "Log in", login_path

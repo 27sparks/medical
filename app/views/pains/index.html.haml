@@ -1,15 +1,21 @@
 %h1 Vorhandene Schmerzarten
-%table
-  %tr
-    %th= t(:id)
-    %th= t(:name)
-    %th= t(:bodypart)
-    %th
-  -@pains.each do |pain|
+%table.table.table-striped
+  %thead
     %tr
-      %td= pain.id
-      %td= link_to pain.name, pain_path(pain.id)
-      %td= pain.bodypart
-      %td
-        = link_to "edit", edit_pain_path(pain.id)
-        = link_to t(:delete), pain, method: :delete
+      %th= t(:id)
+      %th= t(:name)
+      %th= t(:bodypart)
+      %th= t(:description)
+      %th= t(:user)
+      %th
+  %tbody
+    -@pains.each do |pain|
+      %tr
+        %td= pain.id
+        %td= link_to pain.name, pain_path(pain.id)
+        %td= pain.bodypart
+        %td= pain.description
+        %td= pain.user.name if pain.user
+        %td
+          = link_to t(:edit), edit_pain_path(pain.id), id: "edit"
+          = link_to t(:delete), pain, method: :delete, id: "delete"

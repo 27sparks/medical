@@ -100,7 +100,6 @@ describe "Users" do
       before do
         fill_in "Name",             with: new_name
         fill_in "Email",            with: new_email
-        save_and_open_page
         fill_in "Password",         with: user.password
         fill_in "Confirm", with: user.password
         click_button "Speichern"

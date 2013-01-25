@@ -1,18 +1,20 @@
 - provide(:title, t(:all_users))
 %h1= t(:all_users)
-%table
-  %tr
-    %th= t(:id)
-    %th= t(:name)
-    %th= t(:email)
-    %th= t(:role)
-    %th
-  -@users.each do |user|
+%table.table.table-striped
+  %thead
     %tr
-      %td= user.id
-      %td= link_to user.name, user_path(user.id)
-      %td= user.email
-      %td= user.role
-      %td
-        = link_to t(:edit), edit_user_path(user.id)
-        = link_to t(:delete), user, method: :delete
+      %th= t(:id)
+      %th= t(:name)
+      %th= t(:email)
+      %th= t(:role)
+      %th
+  %tbody    
+    -@users.each do |user|
+      %tr
+        %td= user.id
+        %td= link_to user.name, user_path(user.id)
+        %td= user.email
+        %td= user.role
+        %td
+          = link_to t(:edit), edit_user_path(user.id)
+          = link_to t(:delete), user, method: :delete

@@ -6,6 +6,9 @@ $grayMediumLight: #eaeaea;
 
 /* universal */
 
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 html {
   overflow-y: scroll;
 }
@@ -35,13 +38,13 @@ h1 {
   font-size: 2em;
   letter-spacing: -2px;
   margin-bottom: 30px;
+  color: $grayLight;
 }
 
 h2 {
   font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
   color: $grayLight;
 }
@@ -105,12 +108,24 @@ footer ul li {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   padding: 10px;
+  width: 90%;
   margin-bottom: 15px;
 }
 
 input {
   height: auto !important;
 }
+.btn { 
+  margin-top: 10px;
+  display: block;
+}
 
+/* tables */
+
+/* wells */
+.greybox {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 3px;
+}

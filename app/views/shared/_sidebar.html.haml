@@ -1,0 +1,8 @@
+%h2 Mein Befinden letzte Woche
+%h2 Meine Schmerzarten
+%table.table
+  %tbody
+    - @user.pains.each do |pain|
+      %tr  
+        %td=link_to pain.name, pain_path(pain)
+        %td=link_to t(:edit), edit_pain_path(pain)
