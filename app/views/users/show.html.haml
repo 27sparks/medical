@@ -1,9 +1,9 @@
 - provide(:title, @user.name)
 .row
-  .span7
+  .span6
     %h1= @user.name
     %p= @user.email
     =link_to "Benutzerdaten bearbeiten", edit_user_path(@user.id)
-  .span5.greybox
+  .span6.greybox
     = render "shared/sidebar"
 
