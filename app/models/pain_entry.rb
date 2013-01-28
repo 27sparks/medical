@@ -1,9 +1,7 @@
 class PainEntry < ActiveRecord::Base
-  attr_accessible :comment, :value, :pain_id
-  belongs_to :pain
+  attr_accessible :comment, :value, :pain_type, :body_part, :duration, :side
   belongs_to :user
   
-  validates :pain_id, presence: true
   validates :user_id, presence: true
   validates :value, presence: true
 end

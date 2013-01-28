@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128082427) do
+ActiveRecord::Schema.define(:version => 20130128180421) do
 
   create_table "pain_entries", :force => true do |t|
     t.integer  "pain_id"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(:version => 20130128082427) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "duration"
+    t.string   "pain_type"
+    t.string   "body_part"
+    t.string   "side"
+    t.datetime "time"
   end
 
   create_table "pains", :force => true do |t|
