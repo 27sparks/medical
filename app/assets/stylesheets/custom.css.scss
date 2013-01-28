@@ -16,11 +16,7 @@ html {
 body {
   padding-top: 0px;
 }
-@media (min-width: 980px) {
-  body {  
-    padding-top: 60px;
-  }
-}
+
 section {
   overflow: auto;
 }
@@ -138,4 +134,15 @@ input {
   background: #f9f9f9;
   padding: 10px;
   border-radius: 3px;
+}
+
+
+@media (min-width: 980px) {
+  body {  
+    padding-top: 60px;
+  }
+  #logo {
+    margin-left: 0px;
+  }
+  
 }
