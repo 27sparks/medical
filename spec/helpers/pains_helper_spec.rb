@@ -10,5 +10,3 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe PainsHelper do
-end
