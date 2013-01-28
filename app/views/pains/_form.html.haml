@@ -1,4 +1,6 @@
 = form_for(@pain) do |f|
+  = render partial: 'shared/error_messages', item: @pain
+  
   = f.label :name
   = f.text_field :name
 

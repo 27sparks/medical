@@ -1,8 +1,8 @@
-- if @user.errors.any?
+- if item.errors.any?
   #error_explanation
     .alert.alert-error
-      %h4= "The form contains #{ pluralize(@user.errors.count, "error")}"
+      %h4= "The form contains #{ pluralize(item.errors.count, "error")}"
       %ul
-        - @user.errors.full_messages.each do |msg| 
+        - item.errors.full_messages.each do |msg| 
           %li= "#{msg}"
  
