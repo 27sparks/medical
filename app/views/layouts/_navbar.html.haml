@@ -14,9 +14,6 @@
                 %li= link_to "Ernährung"
                 %li= link_to "Stimmung"
                 %li= link_to "Tagesdaten"
-                %li.divider
-                -if can? :create, Pain
-                  %li= link_to "Neue Schmerzart", new_pain_path
                          
             - if current_user.role == 'admin'
               %li#admin-menu.dropdown

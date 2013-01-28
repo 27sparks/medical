@@ -1,20 +1,20 @@
-%h1 Listing pain entries
+%h1 Schmerzeinträge
 
 %table.table
   %thead
     %tr
-      %th Pain
-      %th User
-      %th Value
-      %th Comment
+      %th Benutzer
+      %th Beschreibung
+      %th Wert (int)
+      %th Kommentar
       %th 
       %th 
-      %th 
+      %td
   %tbody
     - @pain_entries.each do |pain_entry|
       %tr
-        %td= pain_entry.pain_id
         %td= pain_entry.user.name
+        %td= pain_description pain_entry
         %td= pain_entry.value
         %td= pain_entry.comment
         %td= link_to 'Show', pain_entry
