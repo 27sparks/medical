@@ -53,16 +53,15 @@ describe "PainEntries" do
     
     describe "filling out the form should edit a pain entry" do
       let(:submit) { "Speichern" }
+      subject { @pain_entry }
     
       before do
         select "Arm", from: "Body part"
-        fill_in "Value", with: 10
-        click_button submit
+        @pain_entry.value = 10
+        click_button "Speichern"
       end
-      
-      it { @pain_entry.value.should eql(10) }
-      
-      
+       
+      it { should eql(10) }
     end
     
   end

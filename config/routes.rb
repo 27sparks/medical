@@ -1,9 +1,6 @@
 Medical::Application.routes.draw do
   resources :pain_entries
 
-
-  get "users/new"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -17,7 +14,6 @@ Medical::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :pains
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
