@@ -5,8 +5,8 @@
       %th Beschreibung
       %th
   %tbody
-    - current_user.pain_entries.where("created_at >= ?", Time.now.beginning_of_day).each do |pain_entry|
-      -if pain_entry.updated_at.to_date == Date.today
-        %tr  
-          %td=link_to pain_description(pain_entry), pain_entry_path(pain_entry)
-          %td=link_to t(:edit), edit_pain_entry_path(pain_entry)
+    - current_user.pain_entries.where("occured_at >= ?", Time.now.beginning_of_day).each do |pain_entry|
+      %tr  
+        %td=link_to pain_description(pain_entry), pain_entry_path(pain_entry)
+        %td=link_to t(:edit), edit_pain_entry_path(pain_entry)
+        %td=link_to t(:delete),  pain_entry, method: :delete, data: { confirm: 'Are you sure?' }
