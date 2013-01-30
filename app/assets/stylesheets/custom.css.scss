@@ -82,7 +82,8 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
+  clear: both;
+  margin-top: 100px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
@@ -125,6 +126,23 @@ input {
 .btn { 
   margin-top: 10px;
   display: block;
+  float: left;
+  margin-right: 10px;
+}
+.back-btn {
+  width: 100px;
+}
+.occured_at_block {
+  display: block;
+}
+#pain_entry_occured_at_1i{
+  width: 12%;
+}
+#pain_entry_occured_at_2i {
+  width: 20%;
+}
+#pain_entry_occured_at_3i, #pain_entry_occured_at_4i, #pain_entry_occured_at_5i  {
+  width: 10%;
 }
 
 /* tables */
@@ -135,6 +153,8 @@ input {
   padding: 10px;
   border-radius: 3px;
 }
+
+
 
 
 @media (min-width: 980px) {
