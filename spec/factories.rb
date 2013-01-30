@@ -5,11 +5,16 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
     role "member"
+    id "1"
   end
 
-  factory :pain do
-    name     "My Pain Kind"
-    bodypart    "head"
-    description "alles"
+  factory :pain_entry do
+    user_id "1"
+    value "55"
+    comment "kommentar"
+    duration "Eine Stunde"
+    pain_type "stechend"
+    body_part "Kopf"
+    side "rechts"
   end
 end
