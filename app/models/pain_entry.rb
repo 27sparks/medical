@@ -1,5 +1,5 @@
 class PainEntry < ActiveRecord::Base
-  attr_accessible :comment, :value, :pain_type, :body_part, :duration, :side
+  attr_accessible :comment, :value, :pain_type, :body_part, :duration, :side, :occured_at
   belongs_to :user
   
   validates :user_id, presence: true

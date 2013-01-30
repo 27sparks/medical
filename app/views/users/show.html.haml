@@ -1,9 +1,7 @@
 - provide(:title, @user.name)
-.row
-  .span6
-    %h1= @user.name
-    %p= @user.email
-    =link_to "Benutzerdaten bearbeiten", edit_user_path(@user.id)
-  .span6.greybox
-    = render "shared/sidebar"
+
+%h1= "Guten Tag #{@user.name}!"
+%p= @user.email
+=link_to "Benutzerdaten bearbeiten", edit_user_path(@user.id)
+
 
