@@ -18,5 +18,10 @@
 
   = f.label :comment
   = f.text_area :comment, :rows => "5"
+  .occured_at_block
+    = f.label :occured_at
+    = f.datetime_select :occured_at
 
   = f.submit "Speichern", class: "btn btn-primary btn-large"
+  = link_to 'Back', root_path, class: "btn btn-large back-btn"
+  
