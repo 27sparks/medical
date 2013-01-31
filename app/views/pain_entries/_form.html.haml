@@ -1,6 +1,10 @@
 = form_for(@pain_entry) do |f|
   = render 'shared/error_messages', item: @pain_entry
-
+  
+  = f.label :occured_at
+  = f.select :occured_at, ["nachts", "morgens", "vormittags", "mittags", "nachmittags", "abends"]
+  = f.date_select :date
+  
   = f.label :body_part
   = f.select :body_part, ["Kopf", "Nacken", "Schulter", "Oberkörper", "Brust", "Arm", "Hand", "Finger", "Bauch", "unterer Rücken", "Gesäß", "Lenden", "Hüfte", "Bein", "Knie", "Fuß", "Zehen"]
   
@@ -18,9 +22,7 @@
 
   = f.label :comment
   = f.text_area :comment, :rows => "5"
-  .occured_at_block
-    = f.label :occured_at
-    = f.datetime_select :occured_at
+
 
   = f.submit "Speichern", class: "btn btn-primary btn-large"
   = link_to 'Back', root_path, class: "btn btn-large back-btn"

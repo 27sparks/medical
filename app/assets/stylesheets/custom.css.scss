@@ -132,17 +132,26 @@ input {
 .back-btn {
   width: 100px;
 }
-.occured_at_block {
-  display: block;
+
+label {
+  clear:both;
 }
-#pain_entry_occured_at_1i{
+
+#pain_entry_occured_at{
+  width: 40%;
+  float: left;
+}
+#pain_entry_date_1i{
   width: 12%;
+  float: left;
 }
-#pain_entry_occured_at_2i {
+#pain_entry_date_2i {
   width: 20%;
+  float: left;
 }
-#pain_entry_occured_at_3i, #pain_entry_occured_at_4i, #pain_entry_occured_at_5i  {
+#pain_entry_date_3i  {
   width: 10%;
+  float: left;
 }
 
 /* tables */

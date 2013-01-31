@@ -61,7 +61,6 @@ describe "PainEntries" do
         click_button "Speichern"
       end
        
-      it { should eql(10) }
     end
     
   end

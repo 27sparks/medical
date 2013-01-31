@@ -21,7 +21,7 @@ class PainEntriesController < ApplicationController
 
     respond_to do |format|
       if @pain_entry.save
-        format.html { redirect_to current_user, notice: 'Pain entry was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Entry was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -33,7 +33,7 @@ class PainEntriesController < ApplicationController
 
     respond_to do |format|
       if @pain_entry.update_attributes(params[:pain_entry])
-        format.html { redirect_to root_url, notice: 'Pain entry was successfully updated.' }
+        format.html { redirect_to current_user, notice: 'Entry was successfully updated.' }
       else
         format.html { render action: "edit" }
       end

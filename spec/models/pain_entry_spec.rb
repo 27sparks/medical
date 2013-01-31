@@ -8,5 +8,13 @@ describe PainEntry do
   
   subject{ @pain_entry }
   
+  it { should respond_to(:value) }
+  it { should respond_to(:body_part) }
+  it { should respond_to(:pain_type) }
+  it { should respond_to(:duration) }
+  it { should respond_to(:user_id) }
+  it { should respond_to(:comment) }
+  it { should respond_to(:side) }
+  it { should respond_to(:date) }
   it { should respond_to(:occured_at) }
 end
