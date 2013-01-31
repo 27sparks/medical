@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131080952) do
+ActiveRecord::Schema.define(:version => 20130131155357) do
 
   create_table "emotion_entries", :force => true do |t|
     t.integer  "value"
@@ -47,15 +47,15 @@ ActiveRecord::Schema.define(:version => 20130131080952) do
   end
 
   create_table "therapy_entries", :force => true do |t|
-    t.string   "type"
     t.string   "intensity"
     t.integer  "duration"
     t.string   "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "occured_at"
     t.date     "date"
     t.integer  "user_id"
+    t.string   "therapy_type"
   end
 
   create_table "users", :force => true do |t|

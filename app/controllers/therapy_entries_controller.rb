@@ -7,7 +7,7 @@ class TherapyEntriesController < ApplicationController
   end
 
   def show
-    @therapy_entry = TherapyEntry.find(params[:id])
+    render 'new'
   end
 
   def new
