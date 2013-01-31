@@ -1,4 +1,7 @@
 Medical::Application.routes.draw do
+  resources :therapy_entries
+
+
   resources :pain_entries
 
   # The priority is based upon order of creation:

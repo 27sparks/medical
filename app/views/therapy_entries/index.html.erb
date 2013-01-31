@@ -1,0 +1,29 @@
+<h1>Listing therapy_entries</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Intensity</th>
+    <th>Duration</th>
+    <th>Comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @therapy_entries.each do |therapy_entry| %>
+  <tr>
+    <td><%= therapy_entry.type %></td>
+    <td><%= therapy_entry.intensity %></td>
+    <td><%= therapy_entry.duration %></td>
+    <td><%= therapy_entry.comment %></td>
+    <td><%= link_to 'Show', therapy_entry %></td>
+    <td><%= link_to 'Edit', edit_therapy_entry_path(therapy_entry) %></td>
+    <td><%= link_to 'Destroy', therapy_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Therapy entry', new_therapy_entry_path %>

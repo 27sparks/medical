@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :role, :password, :password_confirmation
   has_secure_password
-  has_many :pains
+  has_many :therapy_entries
   has_many :pain_entries
 
   before_save { |user| user.email = email.downcase }

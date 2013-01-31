@@ -5,16 +5,16 @@
       %nav
         %ul.nav.pull-right
           - if logged_in?
-            %li#fat-menu.dropdown  
+            %li#fat-menu.dropdown
               %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
                 Neuer Eintrag
                 %b.caret
               %ul.dropdown-menu.fat-menu
                 %li= link_to "Schmerz", new_pain_entry_path
                 %li= link_to "Ernährung"
-                %li= link_to "Stimmung"
+                %li= link_to "Behandlung", new_therapy_entry_path
                 %li= link_to "Tagesdaten"
-                         
+
             - if current_user.role == 'admin'
               %li#admin-menu.dropdown
                 %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
@@ -22,8 +22,7 @@
                   %b.caret
                 %ul.dropdown-menu.dropdown-menu
                   %li= link_to "Benutzer", users_path
-                  %li= link_to "Schmerzarten", pains_path
-            %li#fat-menu.dropdown  
+            %li#fat-menu.dropdown
               %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
                 Account
                 %b.caret

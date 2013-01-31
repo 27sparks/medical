@@ -11,10 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129153222) do
+ActiveRecord::Schema.define(:version => 20130131080952) do
+
+  create_table "emotion_entries", :force => true do |t|
+    t.integer  "value"
+    t.string   "kind"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "emotion_entries", ["user_id"], :name => "index_emotion_entries_on_user_id"
 
   create_table "pain_entries", :force => true do |t|
-    t.integer  "pain_id"
     t.integer  "user_id"
     t.integer  "value"
     t.string   "comment"
@@ -24,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20130129153222) do
     t.string   "pain_type"
     t.string   "body_part"
     t.string   "side"
-    t.datetime "time"
-    t.datetime "occured_at"
+    t.date     "date"
+    t.string   "occured_at"
   end
 
   create_table "pains", :force => true do |t|
@@ -35,6 +44,18 @@ ActiveRecord::Schema.define(:version => 20130129153222) do
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
     t.text     "description"
+  end
+
+  create_table "therapy_entries", :force => true do |t|
+    t.string   "type"
+    t.string   "intensity"
+    t.integer  "duration"
+    t.string   "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "occured_at"
+    t.date     "date"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
