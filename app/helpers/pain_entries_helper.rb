@@ -14,6 +14,6 @@ module PainEntriesHelper
       degree = "sehr starker"
     end
     
-    "#{entry.occured_at unless entry.duration == 'ganztägig'} #{entry.duration} #{degree}, #{entry.pain_type}er Schmerz #{entry.side} am #{entry.body_part}"
+    "#{entry.occured_at unless entry.duration == 'ganztägig'} #{entry.duration} #{degree}, #{entry.pain_type} #{entry.side} am #{entry.body_part}"
   end
 end
