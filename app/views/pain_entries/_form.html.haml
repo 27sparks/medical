@@ -12,7 +12,7 @@
   = f.select :side, ["beidseitig", "mitte", "rechts", "links"]
 
   = f.label :pain_type
-  = f.select :pain_type, ["stechend", "pulsierend", "krampfartig", "juckend", "kribbelnd"]
+  = f.select :pain_type, ["stechender Schmerz", "pulsierender Schmerz", "krampfartiger Schmerz", "Jucken", "Kribbeln", "Schwindel"]
 
   = f.label :value
   = f.range_field :value, options = { min: 0, max: 100, step: 1 }
