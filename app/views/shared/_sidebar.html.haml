@@ -1,11 +1,8 @@
 .left-nav
   %ul.nav.nav-pills.nav-stacked
-    %li{ :class => params[:controller] == "users" ?  'active' : "" }= link_to "Dein Tag", user_path(current_user)        
-    %li
-      = link_to "Deine Woche"
-    %li
-      = link_to "Dein Monat"
-    %li
-      = link_to "Dein Jahr"
-      
-    =params[:controller]
+    %li{ :class => periodicals_action?(:day) ?  'active' : "" }= link_to "Dein Tag", "/periodicals/day"
+    %li{ :class => periodicals_action?(:week) ?  'active' : "" }= link_to "Deine Woche", "/periodicals/week"
+    %li{ :class => periodicals_action?(:month) ?  'active' : "" }= link_to "Dein Monat", "/periodicals/month"
+    %li{ :class => periodicals_action?(:year) ?  'active' : "" }= link_to "Dein Jahr", "/periodicals/year"
+    %li.nav-header Sonstiges
+    %li= link_to "Neuigkeiten"
