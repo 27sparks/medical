@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to "/day"
   end
 
   def edit

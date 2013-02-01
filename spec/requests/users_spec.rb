@@ -18,8 +18,8 @@ describe "Users" do
 
     describe "user page" do
       before { visit user_path(user.id) }
-      it { should have_selector("h1", text: user.name) }
-      it { should have_selector("a", text: "Benutzerdaten bearbeiten") }
+      it { should have_selector("h2", text: "Schmerz") }
+      it { should have_selector("a", text: "Einstellungen") }
       it { should have_selector("title", text: user.name)}
     end
 
@@ -75,7 +75,6 @@ describe "Users" do
     end
 
     describe "page" do
-      it { should have_selector('h1',    text: "#{user.name}") }
       it { should have_selector('title', text: "#{user.name}") }
     end
 

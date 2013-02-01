@@ -121,59 +121,53 @@ footer ul li {
 }
 
 /* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  padding: 10px;
-  width: 90%;
-  margin-bottom: 15px;
-}
-
-input {
-  height: auto !important;
-}
-.btn { 
-  margin-top: 10px;
-  display: block;
-  float: left;
-  margin-right: 10px;
-}
-.back-btn {
-  width: 100px;
-}
-
-label {
-  clear:both;
-}
-
-#pain_entry_occured_at, #therapy_entry_occured_at{
-  width: 120px;
-  float: left;
-}
-#pain_entry_date_1i, #therapy_entry_date_1i{
-  clear: both;
-  width: 80px;
-  float: left;
-}
-#pain_entry_date_2i, #therapy_entry_date_2i {
-  width: 120px;
-  float: left;
-  margin-left: 10px;
-}
-#pain_entry_date_3i, #therapy_entry_date_3i  {
-  width: 50px;
-  float: left;
-  margin-left: 10px;
-}
-
-/* tables */
-td.actions {
-  width: 120px;
-  .btn {
-    float: right;
-    margin: 0 0 0 5px;
+.form {
+  input, textarea, select, .uneditable-input {
+    border: 1px solid #bbb;
+    padding: 10px;
+    width: 90%;
+    margin-bottom: 15px;
+  }
+  
+  input {
+    height: auto !important;
+  }
+  .btn { 
+    margin-top: 10px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+  }
+  .back-btn {
+    width: 100px;
+  }
+  
+  label {
+    clear:both;
+  }
+  
+  #pain_entry_occured_at, #therapy_entry_occured_at{
+    width: 120px;
+    float: left;
+  }
+  #pain_entry_date_1i, #therapy_entry_date_1i{
+    clear: both;
+    width: 80px;
+    float: left;
+  }
+  #pain_entry_date_2i, #therapy_entry_date_2i {
+    width: 120px;
+    float: left;
+    margin-left: 10px;
+  }
+  #pain_entry_date_3i, #therapy_entry_date_3i  {
+    width: 50px;
+    float: left;
+    margin-left: 10px;
   }
 }
+/* tables */
+
 
 
 /* wells */
@@ -184,10 +178,6 @@ td.actions {
   h2 {
     clear:both;
     margin: 20px 5px 0px;
-  }
-  .btn {
-      float: right;
-      margin: 10px;
   }
 }
 

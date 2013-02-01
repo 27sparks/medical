@@ -75,13 +75,14 @@ describe "PainEntries" do
     
     it { should have_content("Neuer Schmerzeintrag") }
     it { should have_content("Value") }
+    
     before do
       select "Kopf", from: "Body part"
       select "mitte", from: "Side"
-      select "juckend", from: "Pain type"
+      select "Jucken", from: "Pain type"
       fill_in "Value", with: 65
       fill_in "Comment", with: "comment"
-      select "Ein paar Minuten", from: "Duration"
+      select "ein paar Minuten", from: "Duration"
     end
     
     it "should create a pain entry" do

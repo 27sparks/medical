@@ -3,36 +3,22 @@
     .container
       #logo= link_to "Medizinisches Tagebuch", root_path, id: "Home"
       %nav
-        %ul.nav.pull-right
+        .nav.pull-right          
           - if logged_in?
-            %li#fat-menu.dropdown
-              %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
-                Neuer Eintrag
-                %b.caret
-              %ul.dropdown-menu.fat-menu
-                %li= link_to "Schmerz", new_pain_entry_path
-                %li= link_to "Ernährung"
-                %li= link_to "Behandlung", new_therapy_entry_path
-                %li= link_to "Tagesdaten"
-
             - if current_user.role == 'admin'
-              %li#admin-menu.dropdown
-                %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
+              .btn-group
+                %a.btn.btn-inverse.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
                   Admin
-                  %b.caret
-                %ul.dropdown-menu.dropdown-menu
+                  %span.caret
+                %ul.dropdown-menu
                   %li= link_to "Benutzer", users_path
-            %li#fat-menu.dropdown
-              %a.dropdown-toggle{ data: {toggle: "dropdown"}, href: '#'}
-                Account
-                %b.caret
-              %ul.dropdown-menu.fat-menu
-                -if can? :read, current_user
-                  %li= link_to "Profil", user_path(current_user)
-                - if can? :edit, current_user
-                  %li= link_to "Einstellungen", edit_user_path(current_user)
-                %li.divider
-                %li= link_to "Log out", logout_path, method: "delete"
+            .btn-group    
+              -if can? :read, current_user
+                = link_to "Profil", user_path(current_user), class: "btn"
+              - if can? :edit, current_user
+                = link_to "Einstellungen", edit_user_path(current_user), class: "btn"
+              = link_to "Log out", logout_path, method: "delete", class: "btn"
           - else
-            %li= link_to "Registrieren", register_path
-            %li= link_to "Log in", login_path
+            .btn-group
+              = link_to "Registrieren", register_path, class: "btn btn-success"
+              = link_to "Log in", login_path, class: "btn btn-success"
