@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 20px;
   color: $grayLight;
@@ -76,6 +76,15 @@ p {
 #logo:hover a{
   color: #0077bb;
   text-decoration: none;
+}
+
+
+/* navigation left */
+
+.left-nav {
+  ul {
+    margin-right: 20px;
+  }
 }
 
 
@@ -170,14 +179,15 @@ td.actions {
 /* wells */
 .greybox {
   background: #f9f9f9;
-  border-radius: 3px;
+  border-radius: 5px;
+  margin-bottom: 20px;
   h2 {
     clear:both;
     margin: 20px 5px 0px;
   }
   .btn {
       float: right;
-      margin: 10px 5px 20px 0px;
+      margin: 10px;
   }
 }
 

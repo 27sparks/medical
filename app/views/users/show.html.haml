@@ -1,7 +1,3 @@
-- provide(:title, @user.name)
-
-%h1= "Guten Tag #{@user.name}!"
-%p= @user.email
-=link_to "Benutzerdaten bearbeiten", edit_user_path(@user.id)
-
+- provide(:title, "Dein Tag, #{@user.name}!")
+= render "shared/entries_today"
 

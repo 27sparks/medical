@@ -14,14 +14,14 @@
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <div class="row">
-        <div class="span6">
+        <% if logged_in? %>
+          <div class="span3">
+            <%= render "shared/sidebar" %>
+          </div>
+        <% end %>
+        <div class="span9">
           <%= yield %>
         </div>
-        <% if logged_in? %>
-        <div class="span6 greybox">
-          <%= render "shared/sidebar" %>
-        </div>
-        <% end %>
       </div>
 
       <div class="row">
