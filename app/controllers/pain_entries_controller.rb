@@ -10,7 +10,8 @@ class PainEntriesController < ApplicationController
   end
 
   def new
-    @pain_entry = current_user.pain_entries.new(:occured_at => DateTime.now + 1.hour)
+    date = params[:date] ? params[:date] : Time.new.to_date
+    @pain_entry = current_user.pain_entries.new(:date => date)
   end
 
   def edit
@@ -21,7 +22,7 @@ class PainEntriesController < ApplicationController
 
     respond_to do |format|
       if @pain_entry.save
-        format.html { redirect_to current_user, notice: 'Entry was successfully created.' }
+        format.html { redirect_to day_path(@pain_entry.date), notice: 'Entry was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -33,7 +34,7 @@ class PainEntriesController < ApplicationController
 
     respond_to do |format|
       if @pain_entry.update_attributes(params[:pain_entry])
-        format.html { redirect_to current_user, notice: 'Entry was successfully updated.' }
+        format.html { redirect_to day_path(@pain_entry.date), notice: 'Entry was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -45,7 +46,8 @@ class PainEntriesController < ApplicationController
     @pain_entry.destroy
 
     respond_to do |format|
-      format.html { redirect_to pain_entries_url }
+      format.html { redirect_to day_path }
+      format.js
     end
   end
 end

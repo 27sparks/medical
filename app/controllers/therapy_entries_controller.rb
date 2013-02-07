@@ -11,7 +11,8 @@ class TherapyEntriesController < ApplicationController
   end
 
   def new
-    @therapy_entry = current_user.therapy_entries.new
+    date = params[:date] ? params[:date] : Time.new.to_date
+    @therapy_entry = current_user.therapy_entries.new(:date => date)
   end
 
   def edit
@@ -22,7 +23,7 @@ class TherapyEntriesController < ApplicationController
 
     respond_to do |format|
       if @therapy_entry.save
-        format.html { redirect_to current_user, notice: 'Entry was successfully created.' }
+        format.html { redirect_to day_path(@therapy_entry.date), notice: 'Entry was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -35,7 +36,7 @@ class TherapyEntriesController < ApplicationController
 
     respond_to do |format|
       if @therapy_entry.update_attributes(params[:therapy_entry])
-        format.html { redirect_to current_user, notice: 'Entry was successfully updated.' }
+        format.html { redirect_to day_path(@therapy_entry.date), notice: 'Entry was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -50,6 +51,7 @@ class TherapyEntriesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to current_user }
+      format.js
     end
   end
 end
