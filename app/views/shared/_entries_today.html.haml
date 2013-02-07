@@ -1,5 +1,6 @@
-%h1.day{ style:  "background: #{generate_color_from_value(add_up_values(@pain_entries))}" }
-  = @date.strftime("%a, %d. %B")
+.row
+  %h1.day{ style:  "background: #{generate_color_from_value(add_up_values(@pain_entries))}" }
+    = @date.strftime("%a, %d. %B")
 .row.greybox
   .span9
     %h2= link_to "Meine heutigen Schmerzeinträge", pain_entries_path

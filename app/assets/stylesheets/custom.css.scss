@@ -4,6 +4,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$grayDark: #aaaaaa;
 
 /* universal */
 
@@ -34,19 +35,19 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 1.7em;
   letter-spacing: -1px;
+  margin-left: 0;
   margin-bottom: 20px;
   color: $grayLight;
   font-weight: normal;
-  &.day, &.week {
-    margin: 0px 0px 10px -30px;
+  &.form {
+    background-color: $grayDark;
+  }
+  &.day, &.week, &.form {
+    margin: 0px 0px 10px 0px;
     color: white;
     border-radius: 5px;
-    padding: 10px 10px 10px 35px;
-  }
-  &.week {
-    margin: 0px 0px 10px 0px;
     padding: 10px;
-    text-align:center;
+    text-align: center;
     a {
       color: #fff;
       text-decoration: none;
@@ -82,9 +83,7 @@ p {
   margin-left: 10px;
   font-size: 1.7em;
   text-transform: uppercase;
-  letter-spacing: -1px;
   padding-top: 9px;
-  font-weight: bold;
   line-height: 1;
   color: blue;
 }
@@ -93,16 +92,6 @@ p {
   color: #0077bb;
   text-decoration: none;
 }
-
-
-/* navigation left */
-
-.left-nav {
-  ul {
-    margin-right: 20px;
-  }
-}
-
 
 /* footer */
 
@@ -137,30 +126,7 @@ footer ul li {
 }
 
 /* forms */
-.form {
-  input, textarea, select, .uneditable-input {
-    border: 1px solid #bbb;
-    padding: 10px;
-    width: 90%;
-    margin-bottom: 15px;
-  }
-  
-  input {
-    height: auto !important;
-  }
-  .btn { 
-    margin-top: 10px;
-    display: block;
-    float: left;
-    margin-right: 10px;
-  }
-  .back-btn {
-    width: 100px;
-  }
-  .submit {
-    clear: both;
-  }
-}
+
 /* tables */
 
 
@@ -170,12 +136,8 @@ footer ul li {
   border: solid 1px #ddd;
   background: #f9f9f9;
   border-radius: 5px;
-  padding-bottom: 10px;
+  padding: 10px;
   margin-bottom: 20px;
-  h2 {
-    clear:both;
-    margin: 20px 5px 0px;
-  }
 }
 .week-box {
   min-height: 200px;
@@ -192,8 +154,6 @@ footer ul li {
   body {  
     padding-top: 60px;
   }
-  #logo {
-    margin-left: 0px;
-  }
+
   
 }
