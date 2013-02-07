@@ -1,3 +1,10 @@
+.row.visible-phone
+  .span3
+    %ul.nav.nav-pills.nav-stacked
+      - t = Time.new
+      %li{ :class => periodicals_action?(:month) ?  'active' : "" }= link_to "Dein Monat", month_path(t.month, t.year)
+      %li{ :class => periodicals_action?(:year) ?  'active' : "" }= link_to "Dein Jahr", year_path(t.year)
+
 %footer.footer
   %small
     copyright 2013

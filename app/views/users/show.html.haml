@@ -1,2 +1,4 @@
 - provide(:title, "Guten Tag, #{@user.name}!")
-
+- if can? :edit, current_user
+  = link_to "Einstellungen", edit_user_path(current_user), class: "btn"
+             

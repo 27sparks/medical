@@ -154,6 +154,9 @@ footer ul li {
   body {  
     padding-top: 60px;
   }
-
-  
+}
+@media (max-width: 480px) {
+  .week-box {
+    min-height: 0px;
+  }
 }
