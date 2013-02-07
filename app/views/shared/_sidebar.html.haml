@@ -1,9 +1,16 @@
 .left-nav
-  .row
+  .row.hidden-phone
     .span3
       %ul.nav.nav-pills.nav-stacked
         - t = Time.new
         %li{ :class => periodicals_action?(:day) ?  'active' : "" }= link_to "Dein Tag", day_path(t.to_date)
         %li{ :class => periodicals_action?(:week) ?  'active' : "" }= link_to "Deine Woche", week_path(t.to_date)
-        %li.hidden-phone{ :class => periodicals_action?(:month) ?  'active' : "" }= link_to "Dein Monat", month_path(t.month, t.year)
-        %li.hidden-phone{ :class => periodicals_action?(:year) ?  'active' : "" }= link_to "Dein Jahr", year_path(t.year)
+        %li{ :class => periodicals_action?(:month) ?  'active' : "" }= link_to "Dein Monat", month_path(t.month, t.year)
+        %li{ :class => periodicals_action?(:year) ?  'active' : "" }= link_to "Dein Jahr", year_path(t.year)
+  .row.visible-phone
+    .span3
+      %ul.nav.nav-tabs
+        %li{ :class => periodicals_action?(:day) ?  'active' : "" }= link_to "Tag", day_path(t.to_date)
+        %li{ :class => periodicals_action?(:week) ?  'active' : "" }= link_to "Woche", week_path(t.to_date)
+        %li{ :class => periodicals_action?(:month) ?  'active' : "" }= link_to "Monat", month_path(t.month, t.year)
+        %li{ :class => periodicals_action?(:year) ?  'active' : "" }= link_to "Jahr", year_path(t.year)
