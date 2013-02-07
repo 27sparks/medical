@@ -13,8 +13,7 @@ describe "Homepages" do
   describe "if there is a user logged in" do
     let(:user) { FactoryGirl.create(:user) }
     before { valid_log_in(user) }
-
-    it { should have_content(user.name)}
-    it { should have_link("Schmerz", href: new_pain_entry_path) }
+    
+    it { should have_link("Neuer Eintrag" ) }
   end
 end

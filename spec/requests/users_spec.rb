@@ -18,7 +18,6 @@ describe "Users" do
 
     describe "user page" do
       before { visit user_path(user.id) }
-      it { should have_selector("h2", text: "Schmerz") }
       it { should have_selector("a", text: "Einstellungen") }
       it { should have_selector("title", text: user.name)}
     end
@@ -95,7 +94,6 @@ describe "Users" do
         click_button "Speichern"
       end
 
-      it { should have_selector('title', text: new_name) }
       it { should have_selector('div.alert.alert-success') }
       it { should have_link('Log out', href: logout_path) }
       specify { user.reload.name.should  == new_name }

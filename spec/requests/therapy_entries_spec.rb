@@ -1,10 +1,19 @@
 require 'spec_helper'
 
 describe "TherapyEntries" do
-  describe "GET /therapy_entries" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
+  describe "create an entry" do
+    it { should have_content('Krankengymnastik') }
+  end
+  
+  describe "show an entry" do
+    it { should have_content('Krankengymnastik') }
+  end
 
-    end
+  describe "edit an entry" do
+    it { should have_content('Massage') }   
+  end
+
+  describe "delete an entry" do   
+    it { should_not have_content('Massage') } 
   end
 end
