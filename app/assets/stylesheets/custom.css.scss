@@ -18,13 +18,9 @@ body {
   padding-top: 0px;
 }
 
-section {
-  overflow: auto;
-}
 textarea {
   resize: vertical;
 }
-
 
 /* typography */
 
@@ -43,9 +39,10 @@ h1 {
     background-color: $grayDark;
   }
   &.day, &.week, &.form {
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 0px 0px;
     color: white;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     padding: 10px;
     text-align: center;
     a {
@@ -74,6 +71,16 @@ p {
 .btn {
   background-image: none;
 }
+
+form {
+  .btn-group {
+    display: block;
+    .btn-back {
+      width: 200px;
+    }
+  }
+}
+
 
 /* header */
 
@@ -125,28 +132,21 @@ footer ul li {
   margin-left: 10px;
 }
 
-/* forms */
-
-/* tables */
-
-
 
 /* wells */
-.greybox {
+.greybox, .week-box{
   border: solid 1px #ddd;
   background: #f9f9f9;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
 }
 .week-box {
   min-height: 200px;
-  background: #f9f9f9;
-  padding: 10px;
-  border: solid 1px #ddd;
+}
+.no-header-box {
   border-radius: 5px;
-  margin-bottom: 20px;
-  
 }
 
 

@@ -7,10 +7,6 @@
   .span9.greybox
     %h2= link_to "Meine heutigen Schmerzeinträge", pain_entries_path
     %table.table.table_striped
-      %thead
-        %tr
-          %th Beschreibung
-          %th
       %tbody
         - @pain_entries.each do |pain_entry|
           %tr{ id: "pain_entries_row_#{pain_entry.id}" } 
@@ -22,13 +18,9 @@
     .btn-group        
       = link_to 'Neuer Eintrag', new_pain_entry_path(date: @date.to_date), class: "btn btn-primary"
 .row
-  .span9.greybox
+  .span9.greybox.no-header-box
     %h2= link_to "Meine heutigen Behandlungseinträge", therapy_entries_path
     %table.table.table_striped
-      %thead
-        %tr
-          %th Beschreibung
-          %th
       %tbody
         - @therapy_entries.each do |therapy_entry|
           %tr{ id: "therapy_entries_row_#{therapy_entry.id}" }   
