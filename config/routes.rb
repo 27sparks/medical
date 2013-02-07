@@ -63,10 +63,10 @@ Medical::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   
-  match 'day' => "periodicals#day"
-  match 'week' => "periodicals#week"
-  match 'month' => "periodicals#month"
-  match 'year' => "periodicals#year"
+  match 'day/(:date)' => "periodicals#day", as: :day
+  match 'week/(:date)' => "periodicals#week", as: :week
+  match 'month/(:month/(:year))' => "periodicals#month", as: :month
+  match 'year/(:year)' => "periodicals#year", as: :year
   match 'login' => 'sessions#new'
   match 'logout' => 'sessions#destroy', via: :delete
   match 'register' => 'users#new'
