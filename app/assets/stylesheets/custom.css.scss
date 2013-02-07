@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 1.7em;
+  font-size: 1.6em;
   letter-spacing: -1px;
   margin-left: 0;
   margin-bottom: 20px;
@@ -43,7 +43,7 @@ h1 {
     color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    padding: 10px;
+    padding: 5px 10px;
     text-align: center;
     a {
       color: #fff;
@@ -64,6 +64,12 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
   margin-bottom: 30px;
+}
+
+dd {
+  padding: 4px 0px;
+  font-size: .9em;
+  line-height: 1.2em;
 }
 
 /* buttons */
@@ -139,11 +145,12 @@ footer ul li {
   background: #f9f9f9;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  padding: 10px;
+  padding: 0px 10px 10px;
   margin-bottom: 20px;
 }
 .week-box {
   min-height: 200px;
+  padding-bottom: 0px;
 }
 .no-header-box {
   border-radius: 5px;
@@ -155,6 +162,7 @@ footer ul li {
     padding-top: 60px;
   }
 }
+
 @media (max-width: 480px) {
   .week-box {
     min-height: 0px;

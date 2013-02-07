@@ -1,23 +1,24 @@
 - provide(:title, "Deine Woche, #{current_user.name}!")
-
 .row
   - (@date-5.days).upto(@date + 1.day) do |date|
     .span3
       %h1.week{ style:  "background: #{generate_color_from_value(add_up_values(@pain_entries[date]))}" }
-        = link_to date.strftime("%a, %d. %B"), day_path(date)
+        = link_to date.strftime("%a, %d. %b"), day_path(date)
       .week-box
-        %ul
+        %dl
+          %dt Schmerzen
           - if @pain_entries.include?(date)
             - @pain_entries[date].each do |entry|
-              %li= link_to short_pain_description(entry), edit_pain_entry_path(entry)
+              %dd= link_to short_pain_description(entry), edit_pain_entry_path(entry)
           -else 
-            %li Keine Schmerzen
-        %ul    
+            %dd Keine Schmerzen
+        %dl    
+          %dt Behandlungen
           - if @therapy_entries.include?(date)
             - @therapy_entries[date].each do |entry|
-              %li= link_to entry.therapy_type, edit_pain_entry_path(entry)
+              %dd= link_to entry.therapy_type, edit_pain_entry_path(entry)
           -else 
-            %li Keine Behandlung
+            %dd Keine Behandlung
 .row
   .span9
     .btn-group
