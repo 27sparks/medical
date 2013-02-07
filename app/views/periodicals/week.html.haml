@@ -1,4 +1,23 @@
+- provide(:title, "Deine Woche, #{current_user.name}!")
+
 .row
-  - 7.times do
-    .span3.greybox
-      %h1 Test
+  - (@date-5.days).upto(@date + 1.day) do |date|
+    .span3
+      %h1.week{ style:  "background: #{generate_color_from_value(add_up_values(@pain_entries[date]))}" }
+        = link_to date.strftime("%a, %d. %B"), day_path(date)
+      .week-box
+        - if @pain_entries.include?(date)
+          %ul
+          - @pain_entries[date].each do |entry|
+            %li= link_to short_pain_description(entry), edit_pain_entry_path(entry)
+        - if @therapy_entries.include?(date)
+          %ul
+          - @therapy_entries[date].each do |entry|
+            %li= link_to entry.therapy_type, edit_pain_entry_path(entry)
+.row
+  .span9.pull-right
+    .btn-group.pull-right
+      = link_to "eine Woche zurück", week_path(@date - 7.days), class: "btn"
+      = link_to "aktuelle Woche", week_path(Time.new.to_date), class: "btn"
+      = link_to "eine Woche vor", week_path(@date + 7.days), class: "btn"
+        

@@ -16,4 +16,30 @@ module PainEntriesHelper
     
     "#{entry.occured_at unless entry.duration == 'ganztägig'} #{entry.duration} #{degree}, #{entry.pain_type} #{entry.side} am #{entry.body_part}"
   end
+  
+  def short_pain_description entry
+    "#{entry.duration} #{entry.pain_type} #{entry.side} am #{entry.body_part}"
+  end
+  
+  def add_up_values entries
+    value = 0
+    if entries.present?
+      entries.each do |e|
+        value += e.value
+      end
+    end
+    value 
+  end
+  
+  def generate_color_from_value value
+    if value == nil
+      value = 0
+    elsif value >= 220
+      value = 220
+    end
+    red = 240
+    green = 220 - (value)
+    blue = 0
+    value > 10 ? "rgb(#{red},#{green},#{blue})" : "rgb(0,200,0)"
+  end
 end

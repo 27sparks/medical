@@ -1,3 +1,5 @@
+%h1.day{ style:  "background: #{generate_color_from_value(add_up_values(@pain_entries))}" }
+  = @date.strftime("%a, %d. %B")
 .row.greybox
   .span9
     %h2= link_to "Meine heutigen Schmerzeinträge", pain_entries_path
@@ -7,15 +9,15 @@
           %th Beschreibung
           %th
       %tbody
-        - current_user.pain_entries.where("date >= ?", Time.now.beginning_of_day).each do |pain_entry|
-          %tr  
+        - @pain_entries.each do |pain_entry|
+          %tr{ id: "pain_entries_row_#{pain_entry.id}" } 
             %td=link_to pain_description(pain_entry), pain_entry_path(pain_entry)
             %td.actions
               .btn-group.pull-right
                 =link_to t(:edit), edit_pain_entry_path(pain_entry), class: "btn btn-primary btn-small"
-                =link_to t(:delete),  pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small"
+                =link_to t(:delete),  pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true
     .btn-group        
-      = link_to 'Neuer Eintrag', new_pain_entry_path, class: "btn btn-success"
+      = link_to 'Neuer Eintrag', new_pain_entry_path(date: @date.to_date), class: "btn btn-primary"
 .row.greybox
   .span9    
     %h2= link_to "Meine heutigen Behandlungseinträge", therapy_entries_path
@@ -25,13 +27,13 @@
           %th Beschreibung
           %th
       %tbody
-        - current_user.therapy_entries.where("date >= ?", Time.now.beginning_of_day).each do |therapy_entry|
-          %tr  
+        - @therapy_entries.each do |therapy_entry|
+          %tr{ id: "therapy_entries_row_#{therapy_entry.id}" }   
             %td=link_to therapy_entry.therapy_type, therapy_entry_path(therapy_entry)
             %td.actions
               .btn-group.pull-right
                 =link_to t(:edit), edit_therapy_entry_path(therapy_entry), class: "btn btn-primary btn-small"
-                =link_to t(:delete),  therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small"
+                =link_to t(:delete),  therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true
     .btn-group
-      = link_to 'Neuer Eintrag', new_therapy_entry_path, class: "btn btn-success"
+      = link_to 'Neuer Eintrag', new_therapy_entry_path(date: @date.to_date), class: "btn btn-primary"
     
