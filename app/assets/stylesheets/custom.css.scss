@@ -4,7 +4,7 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-$grayDark: #aaaaaa;
+$grayDark: #a6a6a6;
 
 /* universal */
 
@@ -29,9 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 1.6em;
-  letter-spacing: -1px;
-  margin-left: 0;
+  font-size: 1.5em;
   margin-bottom: 20px;
   color: $grayLight;
   font-weight: normal;
@@ -39,11 +37,11 @@ h1 {
     background-color: $grayDark;
   }
   &.day, &.week, &.form {
-    margin: 0px 0px 0px 0px;
+    margin: 2px 0px 0px 0px;
     color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    padding: 5px 10px;
+    padding: 5px 0px 4px;
     text-align: center;
     a {
       color: #fff;
@@ -58,11 +56,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.7em;
+  font-size: 1.5em;
   letter-spacing: -1px;
   margin-bottom: 10px;
   font-weight: normal;
-  color: #000;
+  color: $grayDark;
 }
 
 p {
@@ -103,7 +101,9 @@ form {
   text-transform: uppercase;
   padding-top: 9px;
   line-height: 1;
-  color: blue;
+  a {
+    color: #000;
+  }
 }
 
 #logo:hover a{

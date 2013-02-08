@@ -1,13 +1,17 @@
 %footer.footer
   %small
     copyright 2013
-  %nav
-    .btn-group.pull-right
-      .btn= link_to "About",   '#'
-      .btn
-        = link_to '#' do
-          %i.icon-envelope
-      .btn
-        = link_to '#' do
-          %i.icon-question-sign
+  %ul.nav.nav-pills
+    %li
+      = link_to '#' do
+        %i.icon-info-sign
+        About
+    %li
+      = link_to '#' do
+        %i.icon-envelope
+        Contact
+    %li
+      = link_to '#' do
+        %i.icon-question-sign
+        Help
           

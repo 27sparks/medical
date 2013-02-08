@@ -1,7 +1,10 @@
 %header.navbar.navbar-fixed-top
   .navbar-inner
     .container
-      #logo= link_to "Meta", root_path, id: "Home"
+      #logo
+        = link_to root_path, id: "Home"do
+          Meta
+          %i.icon-plus
       %nav
         .nav.pull-right          
           - if logged_in?
@@ -17,7 +20,7 @@
                 = link_to user_path(current_user), class: "btn" do
                   %i.icon-user
               = link_to logout_path, method: "delete", class: "btn" do
-                %i.icon-off
+                %i.icon-eject
                 
           - else
             .btn-group
