@@ -2,13 +2,14 @@
 %h1 Log in
 
 = form_for(:session, url: sessions_path) do |f|
-  = f.label :email
-  = f.text_field :email
+  %fieldset
+    = f.label :email
+    = f.text_field :email
 
-  = f.label :password
-  = f.password_field :password
+    = f.label :password
+    = f.password_field :password
 
-  = f.submit "Log in", class: "btn btn-primary btn-large"
+    = f.submit "Log in", class: "btn btn-primary"
 
 %p
   Noch nicht angemeldet?

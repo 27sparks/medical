@@ -8,21 +8,30 @@
         %dl
           %dt Schmerzen
           - if @pain_entries.include?(date)
-            - @pain_entries[date].each do |entry|
-              %dd= link_to short_pain_description(entry), edit_pain_entry_path(entry)
+            - if @pain_entries[date].count > 2
+              %dd= link_to "Sie haben #{@pain_entries[date].count} Schmerzeintrage", day_path(date)
+            - else 
+              - @pain_entries[date].each do |entry|
+                %dd= link_to short_pain_description(entry), edit_pain_entry_path(entry)
           -else 
             %dd Keine Schmerzen
         %dl    
           %dt Behandlungen
           - if @therapy_entries.include?(date)
-            - @therapy_entries[date].each do |entry|
-              %dd= link_to entry.therapy_type, edit_pain_entry_path(entry)
+            - if @therapy_entries[date].count > 2
+              %dd= link_to "Sie haben #{@therapy_entries[date].count} Schmerzeintrage", day_path(date)
+            - else
+              - @therapy_entries[date].each do |entry|
+                %dd= link_to entry.therapy_type, edit_pain_entry_path(entry)
           -else 
             %dd Keine Behandlung
 .row
   .span9
     .btn-group
-      = link_to "zurück", week_path(@date - 7.days), class: "btn"
+      = link_to week_path(@date - 7.days), class: "btn" do
+        %i.icon-backward
       = link_to "aktuelle Woche", week_path(Time.new.to_date), class: "btn"
-      = link_to "vor", week_path(@date + 7.days), class: "btn"
+      = link_to week_path(@date + 7.days), class: "btn" do
+        %i.icon-forward
+      
         

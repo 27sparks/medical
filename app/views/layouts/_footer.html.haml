@@ -2,7 +2,12 @@
   %small
     copyright 2013
   %nav
-    %ul
-      %li= link_to "About",   '#'
-      %li= link_to "Contact",   '#'
-      %li= link_to "Help",   '#'
+    .btn-group.pull-right
+      .btn= link_to "About",   '#'
+      .btn
+        = link_to '#' do
+          %i.icon-envelope
+      .btn
+        = link_to '#' do
+          %i.icon-question-sign
+          

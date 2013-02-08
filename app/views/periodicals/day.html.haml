@@ -13,8 +13,10 @@
             %td=link_to pain_description(pain_entry), pain_entry_path(pain_entry)
             %td.actions
               .btn-group.pull-right
-                =link_to t(:edit), edit_pain_entry_path(pain_entry), class: "btn btn-primary btn-small"
-                =link_to t(:delete),  pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true
+                =link_to edit_pain_entry_path(pain_entry), class: "btn btn-primary btn-small" do
+                  %i.icon-edit.icon-white
+                =link_to pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
+                  %i.icon-trash.icon-white
     .btn-group        
       = link_to 'Neuer Eintrag', new_pain_entry_path(date: @date.to_date), class: "btn btn-primary"
 .row
@@ -27,8 +29,10 @@
             %td=link_to therapy_entry.therapy_type, therapy_entry_path(therapy_entry)
             %td.actions
               .btn-group.pull-right
-                =link_to t(:edit), edit_therapy_entry_path(therapy_entry), class: "btn btn-primary btn-small"
-                =link_to t(:delete),  therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true
+                =link_to edit_therapy_entry_path(therapy_entry), class: "btn btn-primary btn-small" do
+                  %i.icon-edit.icon-white
+                =link_to therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
+                  %i.icon-trash.icon-white
     .btn-group
       = link_to 'Neuer Eintrag', new_therapy_entry_path(date: @date.to_date), class: "btn btn-primary"
     
