@@ -17,6 +17,8 @@
                   %i.icon-edit.icon-white
                 =link_to pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
                   %i.icon-trash.icon-white
+.row
+  .span9                  
     .btn-group.pull-right        
       = link_to new_pain_entry_path(date: @date.to_date), class: "btn btn-primary" do
         Neuer Eintrag
@@ -34,6 +36,8 @@
                   %i.icon-edit.icon-white
                 =link_to therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
                   %i.icon-trash.icon-white
+.row
+  .span9                  
     .btn-group.pull-right
       = link_to new_therapy_entry_path(date: @date.to_date), class: "btn btn-primary" do
         Neuer Eintrag
