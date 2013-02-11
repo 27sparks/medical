@@ -98,6 +98,9 @@ form {
     .label-field{
       width: 30%;
     }
+    .number-field{
+      height: 100%;
+    }
   }
   select {
     float: left;
@@ -149,8 +152,21 @@ form {
   text-decoration: none;
 }
 
-/* table */
+/* lists */
 
+dl {
+  display: block;
+  float: left;
+}
+
+
+/* table */
+table {
+  width: 100%;
+  td.center, th.center{
+    text-align: center;
+  }
+}
 td.actions {
   padding-right: 0;
 }

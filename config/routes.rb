@@ -1,4 +1,7 @@
 Medical::Application.routes.draw do
+  resources :daily_entries
+
+
   get "periodicals/day"
   get "periodicals/week"
 

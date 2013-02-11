@@ -5,7 +5,30 @@
       = @date.strftime("%a, %d. %B")
 .row
   .span9.greybox
-    %h2 Meine heutigen Schmerzeinträge
+    %h2 Dein Tag
+    %table.table.table-striped
+      %thead
+        %tr
+          %th.center= t(:weight)
+          %th.center= t(:pain_degree)
+          %th.center= t(:emotion_degree)
+          %th  
+      %tbody
+        %tr
+          %td.center= @daily_entry.weight
+          %td.center mittel
+          %td.center gut
+          %td.actions
+            .btn-group
+              = link_to edit_daily_entry_path(@daily_entry.id), class: "btn btn-primary new-entry" do
+                %i.icon-edit.icon-white
+              = link_to new_daily_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
+                %i.icon-plus.icon-white
+
+      
+.row
+  .span9.greybox.no-header-box
+    %h2 Deine heutigen Schmerzeinträge
     %table.table.table-hover
       %tbody
         - if @pain_entries.count == 0

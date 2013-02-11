@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :therapy_entries
   has_many :pain_entries
+  has_many :daily_entries
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
