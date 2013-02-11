@@ -1,26 +1,37 @@
 = form_for(@therapy_entry) do |f|
   = render 'shared/error_messages', item: @therapy_entry
-  
-  = f.label :occured_at
-  = f.select :occured_at, ["nachts", "morgens", "vormittags", "mittags", "nachmittags", "abends"]
-  
-  = f.label :date
-  = f.date_select :date
-
-  = f.label :therapy_type
-  = f.select :therapy_type, ["Krankengymnastik", "Wassergymnastik", "Massage", "Osteopathie"]
- 
-  = f.label :intensity
-  = f.select :intensity, ["sanft", "mittel", "stark"]
- 
-  = f.label :duration
-  = f.select :duration, [15,30,45,60]
- 
-  = f.label :comment
-  = f.text_area :comment, :rows => "5"
-  
-  .btn-group
-    = link_to 'Zurück', root_path, class: "btn"
-    = f.submit "Speichern", class: "btn btn-primary"
+  .fields
+    .fieldset
+      .field.label-field= f.label t(:occured_at)
+      .field
+        = f.select :occured_at, ["nachts", "morgens", "vormittags", "mittags", "nachmittags", "abends"]
+        .not_today
+          - if @therapy_entry.date == Date.today
+            = link_to t(:not_today), "#", class: "btn btn-primary"
+          - else
+            = link_to "nicht für den #{@therapy_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-primary"
+    .fieldset.date_select{ style: "display: none" }
+      .field.label-field= f.label t(:what_date)
+      .field= f.date_select :date
+    .fieldset
+      .field.label-field= f.label t(:therapy_type)
+      .field= f.select :therapy_type, ["Krankengymnastik", "Wassergymnastik", "Massage", "Osteopathie"]
+    .fieldset
+      .field.label-field= f.label t(:intensity)
+      .field= f.select :intensity, ["sanft", "mittel", "stark"]
+    .fieldset
+      .field.label-field= f.label t(:duration)
+      .field= f.select :duration, [15,30,45,60]
+    .fieldset
+      .field.label-field= f.label t(:comment)
+      .field= f.text_area :comment, :rows => "5"
+    .fieldset
+      .btn-group
+        = link_to 'Zurück', root_path, class: "btn"
+        = f.submit "Speichern", class: "btn btn-primary"
     
- 
+:javascript
+  $(".not_today").click(function(){
+    $(this).hide()
+    $('.date_select').show()
+  })

@@ -11,7 +11,7 @@ class PainEntriesController < ApplicationController
 
   def new
     date = params[:date] ? params[:date] : Time.new.to_date
-    @pain_entry = current_user.pain_entries.new(date: date, value: 20)
+    @pain_entry = current_user.pain_entries.new(date: date, value: 20, occured_at: "mittags", side: "mitte")
   end
 
   def edit

@@ -86,40 +86,45 @@ dd {
 }
 
 form {
+  padding-top: 10px;
+  .fieldset{
+    border-top: 1px solid white;
+    clear: both;
+    .field{
+      float: left;
+      width: 70%;
+      padding: 10px;
+    }
+    .label-field{
+      width: 30%;
+    }
+  }
   select {
     float: left;
     margin-right: 10px;
   }
   .btn-group {
     display: block;
+    padding: 10px 0 0 5px;
     .btn-back {
       width: 200px;
     }
   }
-  table {
-    width: 100%;
-    margin-top: 20px;
-    td{
-      padding: 5px;
-    }
-  }
   .date_select {
-    select{
-      width: 150px;
-      #pain_entry_date_1i{ width: 50px; }
-      #pain_entry_date_3i{ width: 60px; }
-      #pain_entry_date_2i{ width: 110px; }
-    }
     textarea {
       width: 200px;
-    }
-    select#pain_entry_date_3i{ 
-      width: 60px; 
     }
   }
   label {
      text-transform: uppercase;
   }
+  #pain_entry_date_1i{ width: 90px; }
+  #pain_entry_date_3i{ width: 60px; }
+  #pain_entry_date_2i{ width: 110px; }
+  #therapy_entry_date_1i{ width: 90px; }
+  #therapy_entry_date_3i{ width: 60px; }
+  #therapy_entry_date_2i{ width: 110px;}
+  
 }
 
 
@@ -206,7 +211,16 @@ footer ul li {
     padding-top: 60px;
   }
 }
-
+@media (max-width: 767px) {
+  form{
+    .fieldset{
+      .field, .label-field{
+        clear:both;
+        width: 100%;
+      }
+    }
+  }
+}
 @media (max-width: 480px) {
   .week-box {
     min-height: 0px;

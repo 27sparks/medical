@@ -4,6 +4,8 @@ de:
   what_date: "Welches Datum?"
   body_part: "Wo tat es weh?"
   side: "Auf welcher Seite?"
+  therapy_type: "Welche Behandlungsart?"
+  intensity: "Mit welcher Intensität wurdest Du behandelt?"
   pain_type: "Wie würdest Du den Schmerz beschrieben?"
   value: " Wie stark?"
   duration: "Dauer"
