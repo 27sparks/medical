@@ -7,8 +7,8 @@ class Ability
       can :manage, :all
     elsif user.role == "member"
       can [:show, :update], User, id: user.id
-      can :manage, PainEntry, user_id: user.id
-      can :manage, TherapyEntry, user_id: user.id
+      can :manage, PainEntry
+      can :manage, TherapyEntry
     else
       can :create, User
     end

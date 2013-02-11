@@ -1,32 +1,44 @@
 = form_for(@pain_entry) do |f|
   = render 'shared/error_messages', item: @pain_entry
+  %table.table
+    %tr
+      %td= f.label t(:occured_at)
+      %td
+        = f.select :occured_at, ["nachts", "morgens", "vormittags", "mittags", "nachmittags", "abends"]
+        .not_today= link_to t(:not_today), "#", class: "btn btn-primary"
+    %tr.date_select{ style: "display: none" }
+      %td= f.label t(:what_date)
+      %td= f.date_select :date,  end_year: Time.now.year, order: [:day, :month, :year]
   
-  = f.label :occured_at
-  = f.select :occured_at, ["nachts", "morgens", "vormittags", "mittags", "nachmittags", "abends"]
-  
-  = f.label :date
-  = f.date_select :date
-  
-  = f.label :body_part
-  = f.select :body_part, ["Kopf", "Nacken", "Schulter", "Oberkörper", "Brust", "Arm", "Hand", "Finger", "Bauch", "unterer Rücken", "Gesäß", "Lenden", "Hüfte", "Bein", "Knie", "Fuß", "Zehen"]
-  
-  = f.label :side
-  = f.select :side, ["beidseitig", "mitte", "rechts", "links"]
-
-  = f.label :pain_type
-  = f.select :pain_type, ["stechender Schmerz", "pulsierender Schmerz", "krampfartiger Schmerz", "Jucken", "Kribbeln", "Schwindel"]
-
-  = f.label :value
-  = f.range_field :value, options = { min: 0, max: 100, step: 1 }
-
-  = f.label :duration
-  = f.select :duration, ["impulsartig", "ein paar Minuten", "eine Stunde", "zwei bis vier Stunden", "vier bis sieben Stunden", "ganztägig"]
-
-  = f.label :comment
-  = f.text_area :comment, :rows => "5"
+    %tr
+      %td= f.label t(:body_part)
+      %td= f.select :body_part, ["Kopf", "Nacken", "Schulter", "Oberkörper", "Brust", "Arm", "Hand", "Finger", "Bauch", "unterer Rücken", "Gesäß", "Lenden", "Hüfte", "Bein", "Knie", "Fuß", "Zehen"]
+    %tr
+      %td= f.label t(:side)
+      %td= f.select :side, ["beidseitig", "mitte", "rechts", "links"]
+    %tr
+      %td= f.label t(:pain_type)
+      %td= f.select :pain_type, ["stechender Schmerz", "pulsierender Schmerz", "krampfartiger Schmerz", "Jucken", "Kribbeln", "Schwindel"]
+    %tr
+      %td= f.label t(:value)
+      %td{ style: "column-span: 2;" }
+        %small sehr schwach
+        = f.range_field :value, options = { min: 0, max: 100, step: 1 }
+        %small unerträglich
+    %tr
+      %td= f.label t(:duration)
+      %td= f.select :duration, ["impulsartig", "ein paar Minuten", "eine Stunde", "zwei bis vier Stunden", "vier bis sieben Stunden", "ganztägig"]
+    %tr
+      %td= f.label t(:comment)
+      %td= f.text_area :comment, :rows => "5"
 
   .btn-group
-    = link_to 'Zurück', root_path, class: "btn"
-    = f.submit "Speichern", class: "btn btn-primary"
+    = link_to t(:back), root_path, class: "btn"
+    = f.submit t(:save), class: "btn btn-primary"
     
  
+:javascript
+  $(".not_today").click(function(){
+    $(this).hide()
+    $('.date_select').show()
+  })

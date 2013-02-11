@@ -40,6 +40,7 @@ module PainEntriesHelper
     red = 240
     green = 220 - (value)
     blue = 0
-    value > 10 ? "rgb(#{red},#{green},#{blue})" : "rgb(0,200,0)"
+    value > 10 ? "rgb(#{red},#{green},#{blue})" : "#0088cc"
   end
+  
 end

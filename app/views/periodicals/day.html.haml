@@ -6,38 +6,43 @@
 .row
   .span9.greybox
     %h2 Meine heutigen Schmerzeinträge
-    %table.table.table_striped
+    %table.table.table-hover
       %tbody
-        - @pain_entries.each do |pain_entry|
-          %tr{ id: "pain_entries_row_#{pain_entry.id}" } 
-            %td=link_to pain_description(pain_entry), pain_entry_path(pain_entry)
-            %td.actions
-              .btn-group.pull-right
-                =link_to edit_pain_entry_path(pain_entry), class: "btn btn-primary btn-small" do
-                  %i.icon-edit.icon-white
-                =link_to pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
-                  %i.icon-trash.icon-white
-.row
-  .span9                  
-    .btn-group.pull-right        
-      = link_to new_pain_entry_path(date: @date.to_date), class: "btn btn-primary" do
-        Neuer Eintrag
+        - if @pain_entries.count == 0
+          %tr
+            %td Keine Schmerzen
+            %td
+        - else
+          - @pain_entries.each do |pain_entry|
+            %tr{ id: "pain_entries_row_#{pain_entry.id}" } 
+              %td=link_to pain_description(pain_entry), pain_entry_path(pain_entry)
+              %td.actions
+                .btn-group.pull-right
+                  =link_to edit_pain_entry_path(pain_entry), class: "btn btn-primary btn-small" do
+                    %i.icon-edit.icon-white
+                  =link_to pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
+                    %i.icon-trash.icon-white
+    = link_to new_pain_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
+      Neuer Eintrag
 .row
   .span9.greybox.no-header-box
     %h2 Meine heutigen Behandlungseinträge
     %table.table.table_striped
       %tbody
-        - @therapy_entries.each do |therapy_entry|
-          %tr{ id: "therapy_entries_row_#{therapy_entry.id}" }   
-            %td=link_to therapy_entry.therapy_type, therapy_entry_path(therapy_entry)
-            %td.actions
-              .btn-group.pull-right
-                =link_to edit_therapy_entry_path(therapy_entry), class: "btn btn-primary btn-small" do
-                  %i.icon-edit.icon-white
-                =link_to therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
-                  %i.icon-trash.icon-white
-.row
-  .span9                  
-    .btn-group.pull-right
-      = link_to new_therapy_entry_path(date: @date.to_date), class: "btn btn-primary" do
-        Neuer Eintrag
+        - if @therapy_entries.count == 0
+          %tr
+            %td Keine Behandlungen
+            %td
+        - else
+          - @therapy_entries.each do |therapy_entry|
+            %tr{ id: "therapy_entries_row_#{therapy_entry.id}" }   
+              %td=link_to therapy_entry.therapy_type, therapy_entry_path(therapy_entry)
+              %td.actions
+                .btn-group.pull-right
+                  =link_to edit_therapy_entry_path(therapy_entry), class: "btn btn-primary btn-small" do
+                    %i.icon-edit.icon-white
+                  =link_to therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
+                    %i.icon-trash.icon-white
+          
+    = link_to new_therapy_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
+      Neuer Eintrag
