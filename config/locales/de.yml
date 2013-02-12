@@ -13,9 +13,11 @@ de:
   back: "zurück"
   save: "speichern"
   weight: "Gewicht"
-  
-  
-  
+  today: "heute"
+  current_week: "aktuelle Woche"
+  pain_degree: "allg. Schmerzgrad"
+  emotion_degree: "Stimmung"
+  menstruation: "Menstruation"
   date:
     abbr_day_names:
     - So

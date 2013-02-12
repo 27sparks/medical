@@ -6,30 +6,39 @@
 .row
   .span9.greybox
     %h2 Dein Tag
-    %table.table.table-striped
+    %table.table
       %thead
         %tr
           %th.center= t(:weight)
           %th.center= t(:pain_degree)
           %th.center= t(:emotion_degree)
+          %th.center= t(:menstruation)
           %th  
       %tbody
         %tr
-          %td.center= @daily_entry.weight
-          %td.center mittel
-          %td.center gut
+          %td.center
+            - if @daily_entry 
+              = "#{@daily_entry.weight} kg"
+              %i{ class: "icon-arrow-#{ weight_tendency(@daily_entry, @date) }"}
+          %td.center= pain_degree_in_words(@daily_entry.pain) if @daily_entry
+          %td.center= emotion_degree_in_words(@daily_entry.emotion) if @daily_entry
+          %td.center= (@daily_entry.menstruation ? '√' : '-') if @daily_entry 
           %td.actions
-            .btn-group
-              = link_to edit_daily_entry_path(@daily_entry.id), class: "btn btn-primary new-entry" do
-                %i.icon-edit.icon-white
-              = link_to new_daily_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
-                %i.icon-plus.icon-white
+            .btn-group.pull-right
+              - if @daily_entry
+                = link_to edit_daily_entry_path(@daily_entry.id), class: "btn btn-primary btn-small" do
+                  %i.icon-edit.icon-white
+                =  link_to @daily_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small" do
+                  %i.icon-trash.icon-white
+              - else
+                = link_to new_daily_entry_path(date: @date.to_date), class: "btn btn-primary btn-small" do
+                  %i.icon-plus.icon-white
 
       
 .row
   .span9.greybox.no-header-box
     %h2 Deine heutigen Schmerzeinträge
-    %table.table.table-hover
+    %table.table
       %tbody
         - if @pain_entries.count == 0
           %tr
@@ -50,7 +59,7 @@
 .row
   .span9.greybox.no-header-box
     %h2 Meine heutigen Behandlungseinträge
-    %table.table.table_striped
+    %table.table
       %tbody
         - if @therapy_entries.count == 0
           %tr
@@ -69,3 +78,13 @@
           
     = link_to new_therapy_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
       Neuer Eintrag
+      
+.row
+  .span9.pagination-centered
+    .btn-group
+      = link_to day_path(@date - 1.day), class: "btn" do
+        %i.icon-backward
+      = link_to t(:today), day_path(Time.new.to_date), class: "btn"
+      = link_to day_path(@date + 1.days), class: "btn" do
+        %i.icon-forward
+      

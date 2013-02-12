@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Datum</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +10,7 @@
 
 <% @daily_entries.each do |daily_entry| %>
   <tr>
+    <td><%= daily_entry.date %></td>
     <td><%= link_to 'Show', daily_entry %></td>
     <td><%= link_to 'Edit', edit_daily_entry_path(daily_entry) %></td>
     <td><%= link_to 'Destroy', daily_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>

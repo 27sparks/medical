@@ -13,7 +13,6 @@ module PainEntriesHelper
     when 81..100
       degree = "sehr starker"
     end
-    
     "#{entry.occured_at unless entry.duration == 'ganztägig'} #{entry.duration} #{degree}, #{entry.pain_type} #{entry.side} am #{entry.body_part}"
   end
   

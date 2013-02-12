@@ -1,18 +1,38 @@
 = form_for(@daily_entry) do |f|
   = render 'shared/error_messages', item: @daily_entry
   .fields
-    .not_today
-      - if @daily_entry.date == Date.today
-        = link_to t(:not_today), "#", class: "btn btn-primary"
-      - else
-        = link_to "nicht für den #{@daily_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-primary"
+    .fieldset
+      .field.not_today
+        - if @daily_entry.date == Date.today
+          = link_to t(:not_today), "#", class: "btn btn-primary"
+        - else
+          = link_to "nicht für den #{@daily_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-primary"
     .fieldset.date_select{ style: "display: none" }
       .field.label-field= f.label t(:what_date)
       .field= f.date_select :date,  end_year: Time.now.year, order: [:day, :month, :year]
-      
+
     .fieldset
       .field.label-field= f.label t(:weight)
       .field= f.number_field :weight, class: "number-field"
+      
+      
+    .fieldset
+      .field.label-field= f.label t(:emotion_degree)
+      .field
+        %small sehr schlecht
+        = f.range_field :emotion, options = { min: 0, max: 100, step: 1 }
+        %small sehr gut
+        
+    .fieldset
+      .field.label-field= f.label t(:pain_degree)
+      .field
+        %small sehr schwach
+        = f.range_field :pain, options = { min: 0, max: 100, step: 1 }
+        %small unerträglich
+    .fieldset
+      .field.label-field= f.label t(:menstruation)
+      .field= f.check_box :menstruation
+        
     .fieldset
       .btn-group
         = link_to 'Zurück', root_path, class: "btn"
