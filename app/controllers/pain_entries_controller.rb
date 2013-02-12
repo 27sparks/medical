@@ -3,9 +3,7 @@ class PainEntriesController < ApplicationController
   respond_to :html, :json 
   
   def index
-    pain_entries = current_user.pain_entries.all
-    pain_entries.extend(PainEntriesRepresenter).to_json
-    respond_with pain_entries
+    @pain_entries = current_user.pain_entries.all
   end
 
   def show

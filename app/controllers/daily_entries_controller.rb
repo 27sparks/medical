@@ -3,9 +3,7 @@ class DailyEntriesController < ApplicationController
   respond_to :html, :json 
 
   def index
-    daily_entries = current_user.daily_entries.order("date DESC").all
-    daily_entries.extend(DailyEntriesRepresenter).to_json
-    respond_with daily_entries
+    @daily_entries = current_user.daily_entries.order("date DESC").all
   end
 
   def new
