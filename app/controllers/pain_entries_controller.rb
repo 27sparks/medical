@@ -1,12 +1,17 @@
 class PainEntriesController < ApplicationController
   load_and_authorize_resource
+  respond_to :html, :json 
   
   def index
-    @pain_entries = PainEntry.where(user_id: current_user.id).all
+    pain_entries = current_user.pain_entries.all
+    pain_entries.extend(PainEntriesRepresenter).to_json
+    respond_with pain_entries
   end
 
   def show
-    render "edit"
+    pain_entry = PainEntry.first
+    pain_entry.extend(PainEntryRepresenter).to_json
+    respond_with pain_entry
   end
 
   def new

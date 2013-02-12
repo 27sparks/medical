@@ -1,9 +1,11 @@
 class TherapyEntriesController < ApplicationController
   load_and_authorize_resource
-
+  respond_to :html, :json
 
   def index
-    @therapy_entries = TherapyEntry.where(user_id: current_user.id).all
+    therapy_entries = current_user.therapy_entries.all
+    therapy_entries.extend(TherapyEntriesRepresenter).to_json
+    respond_with therapy_entries
   end
 
   def show

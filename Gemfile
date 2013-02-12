@@ -6,6 +6,7 @@ gem 'bootstrap-sass', '~> 2.2.2'
 gem 'haml'
 gem 'bcrypt-ruby'
 gem 'cancan'
+gem 'representable'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -1,27 +1,16 @@
 class DailyEntriesController < ApplicationController
+  load_and_authorize_resource
+  respond_to :html, :json 
 
   def index
-    @daily_entries = current_user.daily_entries.order("date DESC").all
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @daily_entries }
-    end
-  end
-
-  def show
-    @daily_entry = DailyEntry.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @daily_entry }
-    end
+    daily_entries = current_user.daily_entries.order("date DESC").all
+    daily_entries.extend(DailyEntriesRepresenter).to_json
+    respond_with daily_entries
   end
 
   def new
     date = params[:date] ? params[:date] : Time.new.to_date
     @daily_entry = current_user.daily_entries.find_or_initialize_by_date(date)
-
     respond_to do |format|
       format.html
     end
@@ -37,10 +26,8 @@ class DailyEntriesController < ApplicationController
     respond_to do |format|
       if @daily_entry.save
         format.html { redirect_to day_path(@daily_entry.date), notice: 'Daily entry was successfully created.' }
-        format.json { render json: @daily_entry, status: :created, location: @daily_entry }
       else
         format.html { render action: "new" }
-        format.json { render json: @daily_entry.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,10 +38,8 @@ class DailyEntriesController < ApplicationController
     respond_to do |format|
       if @daily_entry.update_attributes(params[:daily_entry])
         format.html { redirect_to day_path(@daily_entry.date), notice: 'Daily entry was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @daily_entry.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,7 +49,7 @@ class DailyEntriesController < ApplicationController
     @daily_entry.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to day_path(@daily_entry.date) }
     end
   end
 end
