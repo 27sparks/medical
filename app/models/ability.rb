@@ -9,6 +9,7 @@ class Ability
       can [:show, :update], User, id: user.id
       can :manage, PainEntry
       can :manage, TherapyEntry
+      can :manage, DailyEntry
     else
       can :create, User
     end

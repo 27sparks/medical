@@ -27,7 +27,7 @@
       .field= f.text_area :comment, :rows => "5"
     .fieldset
       .btn-group
-        = link_to 'Zurück', root_path, class: "btn"
+        = link_to 'Zurück', day_path(@therapy_entry.date), class: "btn"
         = f.submit "Speichern", class: "btn btn-primary"
     
 :javascript

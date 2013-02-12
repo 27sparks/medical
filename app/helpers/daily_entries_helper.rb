@@ -32,16 +32,20 @@ module DailyEntriesHelper
   
   def weight_tendency entry, date
     days_before = DailyEntry.where("date < ?", date).order("date DESC").first
-    if days_before
-      if entry.weight > days_before.weight 
-        "up"
-      elsif entry.weight < days_before.weight
-        "down"
+    if entry.weight
+      if days_before
+        if entry.weight > days_before.weight 
+          "up"
+        elsif entry.weight < days_before.weight
+          "down"
+        else
+          "right"
+        end
       else
-        "right"
+        "#{entry.weight} kg"
       end
     else
-      "#{entry.weight} kg"
+      "--"
     end
   end
 end
