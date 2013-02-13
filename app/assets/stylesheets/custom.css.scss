@@ -34,7 +34,7 @@ h1 {
   margin-bottom: 20px;
   color: $grayLight;
   font-weight: normal;
-  &.form, &.month {
+  &.form, &.month, &.day, &.week {
     background-color: $blue;
   }
   &.day, &.week, &.form, &.month {
@@ -62,6 +62,11 @@ h2 {
   margin: 15px 0 10px 5px;
   font-weight: normal;
   color: $grayDark;
+  clear: both;
+}
+h4 {
+  font-size: 1em;
+  font-weight: bold;
 }
 
 p {
@@ -154,14 +159,6 @@ form {
 
 /* lists */
 
-dl {
-  display: block;
-  float: left;
-}
-dl.day {
-  padding: 0 20px 0 0;
-}
-
 /* table */
 table {
   width: 100%;
@@ -215,6 +212,22 @@ footer ul li {
   padding: 0px 10px 0px;
   margin-bottom: 20px;
 }
+.whitebox {
+  background: #ffffff;
+  margin-bottom: 10px;
+  padding: 5px 10px 0;
+  border-radius: 5px;
+}
+.day-field {
+  display: block;
+  padding: 10px;
+  float: left;
+  text-align: center;
+  width: 120px;
+  height: 100px;
+  border-right: 1px solid $grayMediumLight;
+  border-bottom: 1px solid $grayMediumLight;
+}
 .week-box {
   min-height: 200px;
   padding-bottom: 0px;
@@ -227,7 +240,7 @@ svg{
   font-size: 10px;
 }
 #month-pain-chart {
-  margin: 20px 0;
+  margin: 20px 10px 10px;
   overflow: scroll;
 }
 
@@ -237,6 +250,9 @@ svg{
   }
 }
 @media (max-width: 767px) {
+  .day-field {
+  
+  }
   form{
     .fieldset{
       .field, .label-field{

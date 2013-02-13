@@ -2,7 +2,7 @@
 .row
   - (@date).upto(@date + 6.day) do |date|
     .span3
-      %h1.week{ style:  "background: #{ generate_color_from_value(add_up_values(@pain_entries[date])) }" }
+      %h1.week
         = link_to date.strftime("%a, %d. %b"), day_path(date)
       .week-box{ style: "background: #{ generate_color_from_date(date) }"}
         %dl

@@ -1,84 +1,79 @@
 - provide(:title, "Dein Tag, #{current_user.name}!")
 .row
   .span9
-    %h1.day{ style:  "background: #{generate_color_from_value(add_up_values(@pain_entries))}" }
+    %h1.day
       = @date.strftime("%a, %d. %B")
 .row
   .span9.greybox
-    %h2 Dein Tag
-    %dl.day
-      %dt= t(:weight)
+    .day-field
+      %h4= t(:weight)
       %dd
         - if @daily_entry 
           = "#{@daily_entry.weight} kg"
           %i{ class: "icon-arrow-#{ weight_tendency(@daily_entry, @date) }"}
-    %dl.day
-      %dt= t(:pain_degree)
-      %dd= pain_degree_in_words(@daily_entry.pain) if @daily_entry
-    %dl.day
-      %dt= t(:emotion_degree)
-      %dd= emotion_degree_in_words(@daily_entry.emotion) if @daily_entry
-    %dl.day
-      %dt= t(:menstruation)
-      %dd= (@daily_entry.menstruation ? '√' : '-') if @daily_entry 
-    %dl.day
-      %dt
-      %dd      
-        .btn-group.pull-right
-          - if @daily_entry
-            = link_to edit_daily_entry_path(@daily_entry.id), class: "btn btn-primary btn-small" do
-              %i.icon-edit.icon-white
-            =  link_to @daily_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small" do
-              %i.icon-trash.icon-white
+    .day-field
+      %h4= t(:pain_degree)
+      %p= pain_degree_in_words(@daily_entry.pain) if @daily_entry
+    .day-field
+      %h4= t(:emotion_degree)
+      %p= emotion_degree_in_words(@daily_entry.emotion) if @daily_entry
+    .day-field
+      %h4= t(:menstruation)
+      %p= (@daily_entry.menstruation ? '√' : '-') if @daily_entry 
+    .row
+    .btn-group.pull-right{style: "padding: 10px;"}
+      - if @daily_entry
+        = link_to edit_daily_entry_path(@daily_entry.id), class: "btn btn-primary btn-small" do
+          %i.icon-edit.icon-white
+        =  link_to @daily_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small" do
+          %i.icon-trash.icon-white
+      - else
+        = link_to new_daily_entry_path(date: @date.to_date), class: "btn btn-primary btn-small" do
+          %i.icon-plus.icon-white
+    .row  
+    .whitebox
+      %h2 Deine heutigen Schmerzeinträge
+      %table.table
+        %tbody
+          - if @pain_entries.count == 0
+            %tr
+              %td Keine Schmerzen
+              %td
           - else
-            = link_to new_daily_entry_path(date: @date.to_date), class: "btn btn-primary btn-small" do
-              %i.icon-plus.icon-white
-
-      
-.row
-  .span9.greybox.no-header-box
-    %h2 Deine heutigen Schmerzeinträge
-    %table.table
-      %tbody
-        - if @pain_entries.count == 0
-          %tr
-            %td Keine Schmerzen
-            %td
-        - else
-          - @pain_entries.each do |pain_entry|
-            %tr{ id: "pain_entries_row_#{pain_entry.id}" } 
-              %td=link_to pain_description(pain_entry), pain_entry_path(pain_entry)
-              %td.actions
-                .btn-group.pull-right
-                  =link_to edit_pain_entry_path(pain_entry), class: "btn btn-primary btn-small" do
-                    %i.icon-edit.icon-white
-                  =link_to pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
-                    %i.icon-trash.icon-white
-    = link_to new_pain_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
-      Neuer Eintrag
-.row
-  .span9.greybox.no-header-box
-    %h2 Meine heutigen Behandlungseinträge
-    %table.table
-      %tbody
-        - if @therapy_entries.count == 0
-          %tr
-            %td Keine Behandlungen
-            %td
-        - else
-          - @therapy_entries.each do |therapy_entry|
-            %tr{ id: "therapy_entries_row_#{therapy_entry.id}" }   
-              %td=link_to therapy_entry.therapy_type, therapy_entry_path(therapy_entry)
-              %td.actions
-                .btn-group.pull-right
-                  =link_to edit_therapy_entry_path(therapy_entry), class: "btn btn-primary btn-small" do
-                    %i.icon-edit.icon-white
-                  =link_to therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
-                    %i.icon-trash.icon-white
-          
-    = link_to new_therapy_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
-      Neuer Eintrag
-      
+            - @pain_entries.each do |pain_entry|
+              %tr{ id: "pain_entries_row_#{pain_entry.id}" } 
+                %td=link_to pain_description(pain_entry), edit_pain_entry_path(pain_entry)
+                %td.actions
+                  .btn-group.pull-right
+                    =link_to edit_pain_entry_path(pain_entry), class: "btn btn-primary btn-small" do
+                      %i.icon-edit.icon-white
+                    =link_to pain_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
+                      %i.icon-trash.icon-white
+      = link_to new_pain_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
+        Neuer Eintrag
+    .row  
+    .whitebox        
+      %h2 Meine heutigen Behandlungseinträge
+      %table.table
+        %tbody
+          - if @therapy_entries.count == 0
+            %tr
+              %td Keine Behandlungen
+              %td
+          - else
+            - @therapy_entries.each do |therapy_entry|
+              %tr{ id: "therapy_entries_row_#{therapy_entry.id}" }   
+                %td=link_to therapy_entry.therapy_type, therapy_entry_path(therapy_entry)
+                %td.actions
+                  .btn-group.pull-right
+                    =link_to edit_therapy_entry_path(therapy_entry), class: "btn btn-primary btn-small" do
+                      %i.icon-edit.icon-white
+                    =link_to therapy_entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small", remote: true do
+                      %i.icon-trash.icon-white
+            
+      = link_to new_therapy_entry_path(date: @date.to_date), class: "btn btn-primary new-entry" do
+        Neuer Eintrag
+        
 .row
   .span9.pagination-centered
     .btn-group
