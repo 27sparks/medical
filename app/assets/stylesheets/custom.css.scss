@@ -221,6 +221,13 @@ footer ul li {
   border-radius: 5px;
 }
 
+svg{
+  font-size: 10px;
+}
+#month-pain-chart {
+  margin: 20px 0;
+  overflow: scroll;
+}
 
 @media (min-width: 980px) {
   body {  

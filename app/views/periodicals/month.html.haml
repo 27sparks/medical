@@ -1,9 +1,9 @@
 - provide(:title, "Dein Monat, #{current_user.name}!")
 .row
   .span9
-    .pretty
+    %h1.month= "Monatsübersicht #{month_year_from_numbers params[:month], params[:year]}"
+.row
+  .span9.greybox
+    #month-pain-chart
     %script{ type: "text/javascript" }
-      var dataset = $.getJSON('/pain_entries.json')
-      d3.select(".pretty").append("p").text("New paragraph!");
-    %svg{ width: "500", height: "500" }
-      %circle{ cx: "125", cy: "125", r: "122", fill: "blue", stroke: "gray", :"stroke-width" => "2" }
+      $("#month-pain-chart").monthPainChart()
