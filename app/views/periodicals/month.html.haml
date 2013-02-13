@@ -1,5 +1,9 @@
 - provide(:title, "Dein Monat, #{current_user.name}!")
 .row
-  -31.times do |i|
-    .span1.greybox
-      %h4=i+1
+  .span9
+    .pretty
+    %script{ type: "text/javascript" }
+      var dataset = $.getJSON('/pain_entries.json')
+      d3.select(".pretty").append("p").text("New paragraph!");
+    %svg{ width: "500", height: "500" }
+      %circle{ cx: "125", cy: "125", r: "122", fill: "blue", stroke: "gray", :"stroke-width" => "2" }
