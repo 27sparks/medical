@@ -67,8 +67,7 @@
           attr("width", barWidth).
           attr("fill", (datum)->
             value = datum
-            if value >= 220
-              value = 220
+            value = 220 if value >= 220 
             red = 240
             green = 220 - value
             blue = 0
