@@ -4,9 +4,9 @@
     .fieldset
       .field.not_today
         - if @daily_entry.date == Date.today
-          = link_to t(:not_today), "#", class: "btn btn-primary"
+          = link_to t(:not_today), "#", class: "btn"
         - else
-          = link_to "nicht für den #{@daily_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-primary"
+          = link_to "nicht für den #{@daily_entry.date.strftime("%a, %d. %b")}", '#', class: "btn"
     .fieldset.date_select{ style: "display: none" }
       .field.label-field= f.label t(:what_date)
       .field= f.date_select :date,  end_year: Time.now.year, order: [:day, :month, :year]

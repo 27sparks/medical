@@ -1,6 +1,6 @@
 .row
   .span9
-    %h1.form Neuer Tagebucheintrag
+    %h1.form= "Neuer Tagebucheintrag - #{@daily_entry.date.strftime("%a, %d. %b")}"
 .row
   .span9.greybox
     = render 'form'
