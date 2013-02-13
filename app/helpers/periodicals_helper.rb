@@ -10,4 +10,8 @@ module PeriodicalsHelper
       ""
     end
   end
+  
+  def month_year_from_numbers month, year
+    "#{t('date.month_names')[month.to_i]} #{year}"
+  end
 end
