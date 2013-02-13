@@ -4,10 +4,15 @@
     .fieldset
       .field.label-field= f.label t(:occured_at)
       .field
-        = f.select :occured_at, ["nachts", "morgens", "vormittags", "mittags", "nachmittags", "abends"]
-        .not_today
+        .btn-group{ :"data-toggle" => "buttons-radio" }
+          %button.btn.btn-primary{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at nachts", value: "nachts" } nachts
+          %button.btn.btn-primary{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at morgens", value: "morgens" } morgens
+          %button.btn.btn-primary{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at mittags", value: "mittags"  } mittags
+          %button.btn.btn-primary{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at abends", value: "abends"  } abends
+        = f.text_field :occured_at, type: "hidden"      
+        .not_today.pull-right{ style: "margin: 10px 0; "}
           - if @pain_entry.date == Date.today
-            = link_to t(:not_today), "#", class: "btn btn-primary"
+            = link_to t(:not_today), "#", class: "btn btn-mini"
           - else
             = link_to "nicht für den #{@pain_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-primary"
     .fieldset.date_select{ style: "display: none" }
@@ -19,7 +24,13 @@
       .field= f.select :body_part, ["Kopf", "Nacken", "Schulter", "Oberkörper", "Brust", "Arm", "Hand", "Finger", "Bauch", "unterer Rücken", "Gesäß", "Lenden", "Hüfte", "Bein", "Knie", "Fuß", "Zehen"]
     .fieldset
       .field.label-field= f.label t(:side)
-      .field= f.select :side, ["beidseitig", "mitte", "rechts", "links"]
+      .field
+        .btn-group{ :"data-toggle" => "buttons-radio" }
+          %button.btn.btn-primary{ type: "button", name: "pain_entry[side]", class: "pain_entry_side links", value: "links" } links
+          %button.btn.btn-primary{ type: "button", name: "pain_entry[side]", class: "pain_entry_side mittig", value: "mittig" } mittig
+          %button.btn.btn-primary{ type: "button", name: "pain_entry[side]", class: "pain_entry_side beidseitig", value: "beidseitig" } beidseitig
+          %button.btn.btn-primary{ type: "button", name: "pain_entry[side]", class: "pain_entry_side rechts", value: "rechts"  } rechts
+        = f.text_field :side, type: "hidden"
     .fieldset
       .field.label-field= f.label t(:pain_type)
       .field= f.select :pain_type, ["stechender Schmerz", "pulsierender Schmerz", "krampfartiger Schmerz", "Jucken", "Kribbeln", "Schwindel"]
@@ -39,8 +50,26 @@
       .btn-group
         = link_to t(:back), day_path(@pain_entry.date), class: "btn"
         = f.submit t(:save), class: "btn btn-primary"
+
 :javascript
   $(".not_today").click(function(){
     $(this).hide()
     $('.date_select').show()
   })
+  
+  var value = "."+$("#pain_entry_side").val()
+  $(value).addClass('active')
+  
+  $(".pain_entry_side").click(function(){
+    value = $(this).context.value
+    $("#pain_entry_side").val(value)
+  })
+  
+  var occured_at = "."+$("#pain_entry_side").val()
+  $(occured_at).addClass('active')
+  
+  $(".pain_entry_occured_at").click(function(){
+    value = $(this).context.value
+    $("#pain_entry_occured_at").val(value)
+  })
+  
