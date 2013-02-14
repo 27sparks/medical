@@ -214,19 +214,20 @@ footer ul li {
 }
 .whitebox {
   background: #ffffff;
-  margin-bottom: 10px;
+  margin: 10px 0 10px 0;
   padding: 5px 10px 0;
   border-radius: 5px;
+  border-right: 1px solid $grayMediumLight;
+  border-bottom: 1px solid $grayMediumLight;
 }
 .day-field {
+  margin: 10px 10px 0 0;
   display: block;
-  padding: 10px;
+  padding: 5px 10px;
   float: left;
   text-align: center;
   width: 120px;
-  height: 100px;
-  border-right: 1px solid $grayMediumLight;
-  border-bottom: 1px solid $grayMediumLight;
+  height: 80px;
 }
 .week-box {
   min-height: 200px;
@@ -235,6 +236,11 @@ footer ul li {
 .no-header-box {
   border-radius: 5px;
 }
+
+
+
+/* charts */
+
 
 svg{
   font-size: 10px;

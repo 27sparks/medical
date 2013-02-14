@@ -5,19 +5,19 @@
       = @date.strftime("%a, %d. %B")
 .row
   .span9.greybox
-    .day-field
+    .day-field.whitebox
       %h4= t(:weight)
       %dd
         - if @daily_entry 
           = "#{@daily_entry.weight} kg"
           %i{ class: "icon-arrow-#{ weight_tendency(@daily_entry, @date) }"}
-    .day-field
+    .day-field.whitebox
       %h4= t(:pain_degree)
       %p= pain_degree_in_words(@daily_entry.pain) if @daily_entry
-    .day-field
+    .day-field.whitebox
       %h4= t(:emotion_degree)
       %p= emotion_degree_in_words(@daily_entry.emotion) if @daily_entry
-    .day-field
+    .day-field.whitebox
       %h4= t(:menstruation)
       %p= (@daily_entry.menstruation ? '√' : '-') if @daily_entry 
     .row
