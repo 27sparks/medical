@@ -22,7 +22,7 @@
               %dd= link_to "Sie haben #{@therapy_entries[date].count} Schmerzeintrage", day_path(date)
             - else
               - @therapy_entries[date].each do |entry|
-                %dd= link_to entry.therapy_type, edit_pain_entry_path(entry)
+                %dd= link_to entry.therapy_type, edit_therapy_entry_path(entry)
           -else 
             %dd Keine Behandlung
 .row
