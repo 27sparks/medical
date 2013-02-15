@@ -3,7 +3,8 @@ class DailyEntriesController < ApplicationController
   respond_to :html, :json 
 
   def index
-    @daily_entries = current_user.daily_entries.order("date DESC").all
+    date = params[:date].present? ? params[:date].to_date : Time.new.to_date
+    @daily_entries = current_user.daily_entries.where( :date => date.beginning_of_month..date.end_of_month )
   end
 
   def new

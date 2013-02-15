@@ -28,25 +28,34 @@
       # is generally empty as we don't want to alter the default options for
       # future instances of the plugin
       @options = $.extend {}, defaults, options
-
       @_defaults = defaults
       @_name = pluginName
-      @init()
-
-    init: ->
-      url = "/pain_entries.json"
-      console.log('loaded')
-      add_p(url)
+      @init(options)
+    
+    init: (options) ->
+      url = "/pain_entries.json?date="+ options[0]
+      days_in_month = options[1]
+      add_pain_chart(url, days_in_month, "value")
       
-    add_p= (url)->
+      $('.chart-select')
+        .click ->
+          kind = $(this).attr('data-chart')
+          attr = $(this).attr('data-attr')
+          url = "/" + kind + ".json?date="+ options[0]
+          $('#month-pain-chart').html('')
+          add_pain_chart(url, days_in_month, attr)
+          
+    add_pain_chart= (url, days_in_month, attr)->
       d3.json url, (json)->
-        value_by_date = parse_data_by_date(json)
-        barWidth = 20
-        width = (barWidth + 1) * 31
-        height = 300
+        value_by_day = group_value_by_day(json, attr)
+        barWidth = ($("#month-pain-chart").width() / days_in_month ) - 1
+        barWidth = 15 if barWidth <= 15
+        width = (barWidth + 1) * days_in_month
+        height = width / 2
+        height = 200 if height <= 200
         
-        x = d3.scale.linear().domain([0, value_by_date.length]).range([0, width])
-        y = d3.scale.linear().domain([0, d3.max(value_by_date, (datum)-> return datum )]).
+        x = d3.scale.linear().domain([0, value_by_day.length]).range([0, width])
+        y = d3.scale.linear().domain([0, d3.max(value_by_day, (datum)-> return datum )]).
           rangeRound([0, height])
         
         barDemo = d3.select("#month-pain-chart").
@@ -55,67 +64,46 @@
           attr("height", height)
         
         barDemo.selectAll("rect").
-          data(value_by_date).
+          data(value_by_day).
           enter().
           append("svg:rect").
-          attr("x", (datum, index)->
-            return x(index) ).
-          attr("y", (datum)->
-            return height - y(datum) ).
-          attr("height", (datum)->
-            return y(datum) ).
+          attr("x", (datum, index)-> return x(index) ).
+          attr("y", (datum)-> return height - y(datum)-10 ).
+          attr("height", (datum)-> return y(datum)-10 ).
           attr("width", barWidth).
           attr("fill", (datum)->
-            value = datum
-            value = 220 if value >= 220 
-            red = 240
-            green = 220 - value
-            blue = 0
-            color = "rgb("+red+","+green+","+blue+")"
-            if value <= 20
-              color = "#0088cc" 
+            datum = 220 if datum >= 220 
+            green = 220 - datum
+            color = "rgb(240," + green + ",0)"
+            color = "#0088cc" if datum <= 20
             return color )
           
-        #barDemo.selectAll("text").
-        #  data(value_by_date).
-        #  enter().
-        #  append("svg:text").
-        #  attr("x", (datum, index)-> return x(index) + barWidth ).
-        #  attr("y", (datum)-> return height - y(datum) ).
-        #  attr("dx", -barWidth/2).
-        #  attr("dy", "1.2em").
-        #  attr("text-anchor", "middle").
-        #  text((datum)-> return datum).
-        #  attr("fill", "white")
-          
         barDemo.selectAll("text.yAxis").
-          data(value_by_date).
-          enter().append("svg:text").
+          data(value_by_day).
+          enter().
+          append("svg:text").
           attr("x", (datum, index)-> return x(index) + barWidth ).
           attr("y", height - 3 ).
           attr("dx", -barWidth/2).
           attr("text-anchor", "middle").
           attr("style", "font-size: 11;").
           text((d, index)-> return index+1).
-          attr("fill", "white").
+          attr("fill", "black").
           attr("class", "yAxis")
       
-      parse_data_by_date= (data)->
+      group_value_by_day= (data, attr)->
         array = []
-        for x in [0..30]
-          array[x] = 16
+        array.length = 0
+        for x in [0..days_in_month - 1]
+          array[x] = 0
         for i,datum of data
-          date = parseInt(datum.date.substr(-2))
-          if array[date-1]
-            array[date-1] = array[date-1] + datum.value
+          if array[datum.day-1]
+            array[datum.day-1] = array[datum.day-1] + datum[attr]
           else
-            array[date-1] = datum.value
-            
+            array[datum.day-1] = datum[attr]            
         return array
 
-    
-    
-
+        
   # A really lightweight plugin wrapper around the constructor,
   # preventing against multiple instantiations
   $.fn[pluginName] = (options) ->

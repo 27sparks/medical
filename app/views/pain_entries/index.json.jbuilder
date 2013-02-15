@@ -9,4 +9,7 @@ json.array!(@pain_entries) do |entry|
   json.side entry.side 
   json.occured_at entry.occured_at 
   json.date entry.date
+  json.day entry.date.day
+  json.month entry.date.month
+  json.year entry.date.year
 end

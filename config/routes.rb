@@ -68,7 +68,7 @@ Medical::Application.routes.draw do
   
   match 'day/(:date)' => "periodicals#day", as: :day
   match 'week/(:date)' => "periodicals#week", as: :week
-  match 'month/(:month/(:year))' => "periodicals#month", as: :month
+  match 'month/(:date)' => "periodicals#month", as: :month
   match 'year/(:year)' => "periodicals#year", as: :year
   match 'login' => 'sessions#new'
   match 'logout' => 'sessions#destroy', via: :delete

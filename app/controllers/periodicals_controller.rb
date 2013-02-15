@@ -15,7 +15,7 @@ class PeriodicalsController < ApplicationController
   end
   
   def month
-    @pain_entries = PainEntry.where(user_id: current_user.id).all
+    @date = params[:date] ? params[:date].to_date : Time.new.to_date
   end
 
   def year

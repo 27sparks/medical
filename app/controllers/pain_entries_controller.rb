@@ -3,8 +3,8 @@ class PainEntriesController < ApplicationController
   respond_to :html, :json 
   
   def index
-    @date = Date.today
-    @pain_entries = current_user.pain_entries.where( :date => @date.beginning_of_month..@date.end_of_month )
+    date = params[:date].present? ? params[:date].to_date : Time.new.to_date
+    @pain_entries = current_user.pain_entries.where( :date => date.beginning_of_month..date.end_of_month )
   end
 
   def show

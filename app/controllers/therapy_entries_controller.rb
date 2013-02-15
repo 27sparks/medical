@@ -3,7 +3,8 @@ class TherapyEntriesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @therapy_entries = current_user.therapy_entries.all
+    date = params[:date].present? ? params[:date].to_date : Time.new.to_date
+    @therapy_entries = current_user.therapy_entries.where( :date => date.beginning_of_month..date.end_of_month )
   end
 
   def new

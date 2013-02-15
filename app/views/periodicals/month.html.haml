@@ -1,19 +1,27 @@
 - provide(:title, "Dein Monat, #{current_user.name}!")
 .row
   .span9
-    %h1.month= "Monatsübersicht #{month_year_from_numbers params[:month], params[:year]}"
+    %h1.month= "Monatsübersicht #{@date.strftime("%B %Y")}"
 .row
   .span9.greybox
     #month-pain-chart
-    %script{ type: "text/javascript" }
-      $("#month-pain-chart").monthPainChart()
+    -@kind = "pain"
+
 .navbar
   .navbar-inner
     %ul.nav
-      %li=link_to "Schmerz"
-      %li.divider-vertical
-      %li=link_to "Behandlung"
-      %li.divider-vertical
-      %li=link_to "Gewicht"
-      %li.divider-vertical
-      %li=link_to "Stimmung"
+      %li=link_to "Schmerz","#", class: "chart-select", :"data-chart" => "pain_entries", :"data-attr" => "value"  
+      %li=link_to "Behandlung", '#', class: "chart-select", :"data-chart" => "therapy_entries", :"data-attr" => "value"  
+      %li=link_to "Gewicht", '#', class: "chart-select", :"data-chart" => "daily_entries", :"data-attr" => "weight"  
+      %li=link_to "Stimmung", '#', class: "chart-select", :"data-chart" => "daily_entries", :"data-attr" => "emotion"  
+.row
+  .span9.pagination-centered
+    .btn-group
+      = link_to month_path(@date - 1.month), class: "btn" do
+        %i.icon-backward
+      = link_to "aktueller Monat", month_path(Time.now.to_date), class: "btn"
+      = link_to month_path(@date + 1.month), class: "btn" do
+        %i.icon-forward
+        
+%script{ type: "text/javascript" }
+  $("#month-pain-chart").monthPainChart(["#{@date}", "#{@date.end_of_month.day}", "#{@kind}"])
