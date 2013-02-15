@@ -202,6 +202,12 @@ footer ul li {
   margin-left: 10px;
 }
 
+/* alert */
+.alert {
+  transition: margin-top 2s;
+  -webkit-transition: margin-top 1s;
+  margin-top: 0px;
+}
 
 /* wells */
 .greybox, .week-box{
