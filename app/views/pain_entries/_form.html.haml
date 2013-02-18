@@ -5,16 +5,16 @@
       .field.label-field= f.label t(:occured_at)
       .field
         .btn-group{ :"data-toggle" => "buttons-radio" }
-          %button.btn.btn-primary{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at nachts", value: "nachts" } nachts
-          %button.btn.btn-primary{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at morgens", value: "morgens" } morgens
-          %button.btn.btn-primary{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at mittags", value: "mittags"  } mittags
-          %button.btn.btn-primary{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at abends", value: "abends"  } abends
+          %button.btn.btn-primary.btn-small{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at nachts", value: "nachts" } nachts
+          %button.btn.btn-primary.btn-small{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at morgens", value: "morgens" } morgens
+          %button.btn.btn-primary.btn-small{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at mittags", value: "mittags"  } mittags
+          %button.btn.btn-primary.btn-small{ type: "button", name: "pain_entry[occured_at]", class: "pain_entry_occured_at abends", value: "abends"  } abends
         = f.text_field :occured_at, type: "hidden"      
         .not_today.pull-right{ style: "margin: 10px 0; "}
           - if @pain_entry.date == Date.today
             = link_to t(:not_today), "#", class: "btn btn-mini"
           - else
-            = link_to "nicht für den #{@pain_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-primary"
+            = link_to "nicht für den #{@pain_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-mini"
     .fieldset.date_select{ style: "display: none" }
       .field.label-field= f.label t(:what_date)
       .field= f.date_select :date,  end_year: Time.now.year, order: [:day, :month, :year]
@@ -26,10 +26,10 @@
       .field.label-field= f.label t(:side)
       .field
         .btn-group{ :"data-toggle" => "buttons-radio" }
-          %button.btn.btn-primary{ type: "button", name: "pain_entry[side]", class: "pain_entry_side links", value: "links" } links
-          %button.btn.btn-primary{ type: "button", name: "pain_entry[side]", class: "pain_entry_side mittig", value: "mittig" } mittig
-          %button.btn.btn-primary{ type: "button", name: "pain_entry[side]", class: "pain_entry_side beidseitig", value: "beidseitig" } beidseitig
-          %button.btn.btn-primary{ type: "button", name: "pain_entry[side]", class: "pain_entry_side rechts", value: "rechts"  } rechts
+          %button.btn.btn-primary.btn-small{ type: "button", name: "pain_entry[side]", class: "pain_entry_side links", value: "links" } links
+          %button.btn.btn-primary.btn-small{ type: "button", name: "pain_entry[side]", class: "pain_entry_side mittig", value: "mittig" } mittig
+          %button.btn.btn-primary.btn-small{ type: "button", name: "pain_entry[side]", class: "pain_entry_side beidseitig", value: "beidseitig" } beidseitig
+          %button.btn.btn-primary.btn-small{ type: "button", name: "pain_entry[side]", class: "pain_entry_side rechts", value: "rechts"  } rechts
         = f.text_field :side, type: "hidden"
     .fieldset
       .field.label-field= f.label t(:pain_type)
