@@ -12,6 +12,12 @@
           = "#{@daily_entry.weight} kg"
           %i{ class: "icon-arrow-#{ weight_tendency(@daily_entry, @date) }"}
     .day-field.whitebox
+      %h4= t(:sleep)
+      %dd
+        - if @daily_entry 
+          = "#{@daily_entry.sleep} h"
+          %i{ class: "icon-arrow-#{ weight_tendency(@daily_entry, @date) }"}
+    .day-field.whitebox
       %h4= t(:pain_degree)
       %p= pain_degree_in_words(@daily_entry.pain) if @daily_entry
     .day-field.whitebox

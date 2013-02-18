@@ -15,7 +15,10 @@
       .field.label-field= f.label t(:weight)
       .field= f.number_field :weight, class: "number-field"
       
-      
+    .fieldset
+      .field.label-field= f.label t(:sleep)
+      .field= f.number_field :sleep, class: "number-field", value: 8
+        
     .fieldset
       .field.label-field= f.label t(:emotion_degree)
       .field
