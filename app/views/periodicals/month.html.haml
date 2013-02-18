@@ -10,10 +10,10 @@
 .navbar
   .navbar-inner
     %ul.nav
-      %li=link_to "Schmerz","#", class: "chart-select", :"data-chart" => "pain_entries", :"data-attr" => "value"  
-      %li=link_to "Behandlung", '#', class: "chart-select", :"data-chart" => "therapy_entries", :"data-attr" => "value"  
-      %li=link_to "Gewicht", '#', class: "chart-select", :"data-chart" => "daily_entries", :"data-attr" => "weight"  
-      %li=link_to "Stimmung", '#', class: "chart-select", :"data-chart" => "daily_entries", :"data-attr" => "emotion"  
+      %li=link_to "Schmerz","#", class: "chart-select", :"data-source" => "pain_entries", :"data-attr" => "value", :"data-visualisation" => "bar-chart"  
+      %li=link_to "Behandlung", '#', class: "chart-select", :"data-source" => "therapy_entries", :"data-attr" => "value", :"data-visualisation" => "bar-chart"  
+      %li=link_to "Gewicht", '#', class: "chart-select", :"data-source" => "daily_entries", :"data-attr" => "weight", :"data-visualisation" => "bar-chart"  
+      %li=link_to "Stimmung", '#', class: "chart-select", :"data-source" => "daily_entries", :"data-attr" => "emotion", :"data-visualisation" => "bar-chart"  
 .row
   .span9.pagination-centered
     .btn-group

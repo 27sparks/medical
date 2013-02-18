@@ -1,32 +1,11 @@
-#  Project:
-#  Description:
-#  Author:
-#  License:
-
-# the semi-colon before function invocation is a safety net against concatenated
-# scripts and/or other plugins which may not be closed properly.
-
-# Note that when compiling with coffeescript, the plugin is wrapped in another
-# anonymous function. We do not need to pass in undefined as well, since
-# coffeescript uses (void 0) instead.
 (($, window) ->
-  # window is passed through as local variable rather than global
-  # as this (slightly) quickens the resolution process and can be more efficiently
-  # minified (especially when both are regularly referenced in your plugin).
-
-  # Create the defaults once
   pluginName = 'monthPainChart'
   document = window.document
   defaults =
     property: 'value'
 
-  # The actual plugin constructor
   class Plugin
     constructor: (@element, options) ->
-      # jQuery has an extend method which merges the contents of two or
-      # more objects, storing the result in the first object. The first object
-      # is generally empty as we don't want to alter the default options for
-      # future instances of the plugin
       @options = $.extend {}, defaults, options
       @_defaults = defaults
       @_name = pluginName
@@ -35,77 +14,89 @@
     init: (options) ->
       url = "/pain_entries.json?date="+ options[0]
       days_in_month = options[1]
-      add_pain_chart(url, days_in_month, "value")
+      add_chart(url, days_in_month, "value")
       
       $('.chart-select')
         .click ->
-          kind = $(this).attr('data-chart')
+          source = $(this).attr('data-source')
           attr = $(this).attr('data-attr')
-          url = "/" + kind + ".json?date="+ options[0]
+          url = "/" + source + ".json?date="+ options[0]
           $('#month-pain-chart').html('')
-          add_pain_chart(url, days_in_month, attr)
+          add_chart(url, days_in_month, attr)
           
-    add_pain_chart= (url, days_in_month, attr)->
+    add_chart= (url, days_in_month, attr)->
       d3.json url, (json)->
         value_by_day = group_value_by_day(json, attr)
         barWidth = ($("#month-pain-chart").width() / days_in_month ) - 1
         barWidth = 15 if barWidth <= 15
-        width = (barWidth + 1) * days_in_month
+        width = (barWidth + 1) * days_in_month - 20
         height = width / 2
         height = 200 if height <= 200
+        padding = 20
         
-        x = d3.scale.linear().domain([0, value_by_day.length]).range([0, width])
-        y = d3.scale.linear().domain([0, d3.max(value_by_day, (datum)-> return datum )]).
+        x = d3.scale.linear().domain([value_by_day.length, 0]).range([width, 0])
+        y = d3.scale.linear().domain([0, d3.max(value_by_day, (datum)-> return datum.value )]).
           rangeRound([0, height])
         
-        barDemo = d3.select("#month-pain-chart").
+        chart = d3.select("#month-pain-chart").
           append("svg:svg").
-          attr("width", width).
-          attr("height", height)
+          attr("width", width + padding).
+          attr("height", height + padding)
         
-        barDemo.selectAll("rect").
+        chart.selectAll("rect").
           data(value_by_day).
           enter().
+          append("svg:a"). 
+          attr("xlink:href", (datum, index)-> return "/day/#{datum.date}").
           append("svg:rect").
-          attr("x", (datum, index)-> return x(index) ).
-          attr("y", (datum)-> return height - y(datum)-10 ).
-          attr("height", (datum)-> return y(datum)-10 ).
+          attr("y", (datum)-> return height - y(datum.value) ).
+          attr("x", (datum,i)-> return x(i) + padding).
+          attr("height", (datum)-> 
+            return y(datum.value) ).
           attr("width", barWidth).
-          attr("fill", (datum)->
-            datum = 220 if datum >= 220 
-            green = 220 - datum
+          attr( "fill", (datum)->
+            datum.value = 220 if datum.value >= 220 
+            green = 220 - datum.value
             color = "rgb(240," + green + ",0)"
-            color = "#0088cc" if datum <= 20
-            return color )
-          
-        barDemo.selectAll("text.yAxis").
+            if datum.value <= 10
+              color = "#0088cc"
+            return color)
+
+        chart.selectAll("path").     #whats wrong with this damn line
           data(value_by_day).
           enter().
-          append("svg:text").
-          attr("x", (datum, index)-> return x(index) + barWidth ).
-          attr("y", height - 3 ).
-          attr("dx", -barWidth/2).
-          attr("text-anchor", "middle").
-          attr("style", "font-size: 11;").
-          text((d, index)-> return index+1).
-          attr("fill", "black").
-          attr("class", "yAxis")
-      
+          append("svg:path").
+          attr("y", (datum)-> return height - y(datum.value) ).
+          attr("x", (datum,i)-> return x(i))
+                            
+        xAxis = d3.svg.axis()
+          .scale( d3.scale.linear().domain([value_by_day.length + 1, 1]).range([width, 0]))
+          .tickSize(0,0).ticks(30).tickPadding(10).orient("bottom")
+        
+        yAxis = d3.svg.axis()
+          .scale(d3.scale.linear().domain([d3.max(value_by_day, (datum)-> return datum.value ), 0]).rangeRound([0, height]))
+          .tickSize(0,1).orient("left")
+          
+        chart.append("g")
+          .attr("transform", "translate(#{padding},0)")
+          .call(yAxis)
+        chart.append("g")
+          .attr("transform", "translate(#{padding + barWidth / 2 },#{height})")
+          .call(xAxis)
+
       group_value_by_day= (data, attr)->
         array = []
         array.length = 0
+        yearmonth = "#{data[0].year}-#{data[0].month}-" # hack for getting date for rect links
         for x in [0..days_in_month - 1]
-          array[x] = 0
+          array[x] = { "value": 2, "date": "#{yearmonth}#{x+1}" }
         for i,datum of data
           if array[datum.day-1]
-            array[datum.day-1] = array[datum.day-1] + datum[attr]
+            array[datum.day-1] = { "value" : (array[datum.day-1].value + datum[attr]), "date": datum.date }
           else
-            array[datum.day-1] = datum[attr]            
+            array[datum.day-1] = { "value" : datum[attr], "date": datum.date }
         return array
 
-        
-  # A really lightweight plugin wrapper around the constructor,
-  # preventing against multiple instantiations
   $.fn[pluginName] = (options) ->
     @each ->
       if !$.data(this, "plugin_#{pluginName}")
