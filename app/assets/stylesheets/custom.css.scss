@@ -204,9 +204,13 @@ footer ul li {
 
 /* alert */
 .alert {
-  transition: margin-top 2s;
-  -webkit-transition: margin-top 1s;
-  margin-top: 0px;
+  position: absolute;
+  transition: top 1s;
+  -webkit-transition: top 1s;
+  top: 4px;
+  left: 0px;
+  z-index: 10;
+  width: 100%;
 }
 
 /* wells */

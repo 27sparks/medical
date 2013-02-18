@@ -1,5 +1,4 @@
 $ ->
   callback = -> 
-     $(".alert").css('margin-top', '-58px')
-  
+     $(".alert").css('top', '-58px')
   setTimeout callback, 1000
