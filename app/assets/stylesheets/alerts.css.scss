@@ -1,0 +1,9 @@
+.alert {
+  position: absolute;
+  transition: top 1s;
+  -webkit-transition: top 1s;
+  top: 4px;
+  left: 0px;
+  z-index: 10;
+  width: 100%;
+}

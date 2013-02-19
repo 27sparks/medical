@@ -1,0 +1,43 @@
+form {
+  padding-top: 10px;
+  .fieldset{
+    border-top: 1px solid white;
+    clear: both;
+    .field{
+      float: left;
+      width: 70%;
+      padding: 10px;
+    }
+    .label-field{
+      width: 30%;
+    }
+    .number-field{
+      height: 100%;
+    }
+  }
+  select {
+    float: left;
+    margin-right: 10px;
+  }
+  .btn-group {
+    display: block;
+    padding: 10px 0 0 5px;
+    .btn-back {
+      width: 200px;
+    }
+  }
+  .date_select {
+    textarea {
+      width: 200px;
+    }
+  }
+  label {
+     text-transform: uppercase;
+  }
+  #pain_entry_date_1i{ width: 90px; }
+  #pain_entry_date_3i{ width: 60px; }
+  #pain_entry_date_2i{ width: 110px; }
+  #therapy_entry_date_1i{ width: 90px; }
+  #therapy_entry_date_3i{ width: 60px; }
+  #therapy_entry_date_2i{ width: 110px;}
+}

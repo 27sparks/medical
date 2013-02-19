@@ -1,0 +1,55 @@
+/* typography */
+
+$grayMediumLight: #eaeaea;
+$grayDark: #a6a6a6;
+$blue: #0088cc;
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: $grayMediumLight;
+  font-weight: normal;
+  &.form, &.month, &.day, &.week {
+    background-color: $blue;
+  }
+  &.day, &.week, &.form, &.month {
+    margin: 2px 0px 0px 0px;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 0px 4px;
+    text-align: center;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  } 
+}
+
+h2 {
+  font-size: 1.3em;
+  letter-spacing: -1px;
+  margin: 15px 0 10px 5px;
+  font-weight: normal;
+  color: $grayDark;
+  clear: both;
+}
+h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+  margin-bottom: 30px;
+}

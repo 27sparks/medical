@@ -1,0 +1,18 @@
+#logo {
+  float: left;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  padding-top: 9px;
+  line-height: 1;
+  a {
+    color: #000;
+    font-weight: bold;
+  }
+}
+
+#logo:hover a{
+  color: #666666;
+  text-decoration: none;
+}
