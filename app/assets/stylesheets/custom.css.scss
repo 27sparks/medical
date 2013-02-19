@@ -23,58 +23,6 @@ textarea {
   resize: vertical;
 }
 
-/* typography */
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  color: $grayLight;
-  font-weight: normal;
-  &.form, &.month, &.day, &.week {
-    background-color: $blue;
-  }
-  &.day, &.week, &.form, &.month {
-    margin: 2px 0px 0px 0px;
-    color: white;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding: 5px 0px 4px;
-    text-align: center;
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-  }
-  a {
-    display: block;
-    width: 100%;
-    height: 100%;
-  } 
-}
-
-h2 {
-  font-size: 1.3em;
-  letter-spacing: -1px;
-  margin: 15px 0 10px 5px;
-  font-weight: normal;
-  color: $grayDark;
-  clear: both;
-}
-h4 {
-  font-size: 1em;
-  font-weight: bold;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-  margin-bottom: 30px;
-}
-
 dd {
   padding: 4px 0px;
   font-size: .9em;
@@ -90,75 +38,6 @@ dd {
   margin-bottom: 10px;
 }
 
-form {
-  padding-top: 10px;
-  .fieldset{
-    border-top: 1px solid white;
-    clear: both;
-    .field{
-      float: left;
-      width: 70%;
-      padding: 10px;
-    }
-    .label-field{
-      width: 30%;
-    }
-    .number-field{
-      height: 100%;
-    }
-  }
-  select {
-    float: left;
-    margin-right: 10px;
-  }
-  .btn-group {
-    display: block;
-    padding: 10px 0 0 5px;
-    .btn-back {
-      width: 200px;
-    }
-  }
-  .date_select {
-    textarea {
-      width: 200px;
-    }
-  }
-  label {
-     text-transform: uppercase;
-  }
-  #pain_entry_date_1i{ width: 90px; }
-  #pain_entry_date_3i{ width: 60px; }
-  #pain_entry_date_2i{ width: 110px; }
-  #therapy_entry_date_1i{ width: 90px; }
-  #therapy_entry_date_3i{ width: 60px; }
-  #therapy_entry_date_2i{ width: 110px;}
-  
-}
-
-
-/* header */
-
-#logo {
-  float: left;
-  margin-right: 10px;
-  margin-left: 10px;
-  font-size: 1.7em;
-  text-transform: uppercase;
-  padding-top: 9px;
-  line-height: 1;
-  a {
-    color: #000;
-    font-weight: bold;
-  }
-}
-
-#logo:hover a{
-  color: #666666;
-  text-decoration: none;
-}
-
-/* lists */
-
 /* table */
 table {
   width: 100%;
@@ -170,95 +49,11 @@ td.actions {
   padding-right: 0;
 }
 
-/* footer */
 
-footer {
-  clear: both;
-  margin-top: 100px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
-}
+/**************************/
+/*     MEDIA QUERIES      */
+/*************************/
 
-footer a {
-  color: #555;
-}
-
-footer a:hover {
-  color: #222;
-}
-
-footer small {
-  float: left;
-}
-
-footer ul {
-  float: right;
-  list-style: none;
-}
-
-footer ul li {
-  float: left;
-  margin-left: 10px;
-}
-
-/* alert */
-.alert {
-  position: absolute;
-  transition: top 1s;
-  -webkit-transition: top 1s;
-  top: 4px;
-  left: 0px;
-  z-index: 10;
-  width: 100%;
-}
-
-/* wells */
-.greybox, .week-box{
-  border: solid 1px #ddd;
-  background: #f9f9f9;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding: 0px 10px 0px;
-  margin-bottom: 20px;
-}
-.whitebox {
-  background: #ffffff;
-  margin: 10px 0 10px 0;
-  padding: 5px 10px 0;
-  border-radius: 5px;
-  border-right: 1px solid $grayMediumLight;
-  border-bottom: 1px solid $grayMediumLight;
-}
-.day-field {
-  margin: 10px 10px 0 0;
-  display: block;
-  padding: 5px 10px;
-  float: left;
-  text-align: center;
-  width: 120px;
-  height: 80px;
-}
-.week-box {
-  min-height: 200px;
-  padding-bottom: 0px;
-}
-.no-header-box {
-  border-radius: 5px;
-}
-
-
-
-/* charts */
-
-
-svg{
-  font-size: 10px;
-}
-#month-pain-chart {
-  margin: 20px 10px 10px;
-  overflow: scroll;
-}
 
 @media (min-width: 980px) {
   body {  
