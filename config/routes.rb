@@ -10,7 +10,7 @@ Medical::Application.routes.draw do
   get "periodicals/year"
 
   resources :therapy_entries
-
+  resources :days, only: [:index]
 
   resources :pain_entries
 

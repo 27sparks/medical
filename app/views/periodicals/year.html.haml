@@ -1,2 +1,10 @@
 - provide(:title, "Dein Jahr, #{current_user.name}!")
-%h1 Dein Jahr
+.row
+  .span9
+    %h1.month= "Jahresübersicht"
+.row
+  .span9.greybox
+    #yearly-board
+        
+%script{ type: "text/javascript" }
+  $("#yearly-board").yearlyChart()
