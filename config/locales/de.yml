@@ -1,12 +1,13 @@
 de:
-  occured_at: "Tageszeit des Schmerzvorfalls"
+  name: "Name"
+  occured_at: "Tageszeit"
   not_today: "nicht für heute eintragen?"
-  what_date: "Welches Datum?"
+  what_date: "Datum"
   body_part: "Wo tat es weh?"
   side: "Auf welcher Seite?"
-  therapy_type: "Welche Behandlungsart?"
-  intensity: "Mit welcher Intensität wurdest Du behandelt?"
-  pain_type: "Wie würdest Du den Schmerz beschrieben?"
+  therapy_type: "Behandlungsart"
+  intensity: "Intensität der Behandlung"
+  pain_type: "Schmerzbeschreibung"
   value: " Wie stark?"
   duration: "Dauer"
   comment: "Kommentar"
@@ -19,6 +20,8 @@ de:
   emotion_degree: "Stimmung"
   menstruation: "Menstruation"
   sleep: "Schlafdauer"
+  taken_at: "Tageszeit"
+  dose: "Dosis"
   date:
     abbr_day_names:
     - So
