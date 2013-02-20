@@ -4,12 +4,15 @@
     .fieldset
       .field.label-field= f.label t(:occured_at)
       .field
-        = f.select :occured_at, ["nachts", "morgens", "vormittags", "mittags", "nachmittags", "abends"]
+        .btn-group{ :"data-toggle" => "buttons-radio" }
+          %button.btn.btn-primary.btn-small{ type: "button", name: "medication_entry[occured_at]", class: "medication_entry_occured_at morgens", value: "morgens" } morgens
+          %button.btn.btn-primary.btn-small{ type: "button", name: "medication_entry[occured_at]", class: "medication_entry_occured_at mittags", value: "mittags"  } mittags
+          %button.btn.btn-primary.btn-small{ type: "button", name: "medication_entry[occured_at]", class: "medication_entry_occured_at abends", value: "abends"  } abends
         .not_today
           - if @therapy_entry.date == Date.today
-            = link_to t(:not_today), "#", class: "btn btn-primary"
+            = link_to t(:not_today), "#", class: "btn btn-small pull-right"
           - else
-            = link_to "nicht für den #{@therapy_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-primary"
+            = link_to "nicht für den #{@therapy_entry.date.strftime("%a, %d. %b")}", '#', class: "btn btn-small pull-right"
     .fieldset.date_select{ style: "display: none" }
       .field.label-field= f.label t(:what_date)
       .field= f.date_select :date
