@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216175503) do
+ActiveRecord::Schema.define(:version => 20130220082238) do
 
   create_table "daily_entries", :force => true do |t|
     t.datetime "created_at",   :null => false
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(:version => 20130216175503) do
   end
 
   add_index "emotion_entries", ["user_id"], :name => "index_emotion_entries_on_user_id"
+
+  create_table "medication_entries", :force => true do |t|
+    t.string   "name"
+    t.float    "dose"
+    t.string   "taken_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.date     "date"
+    t.string   "comment"
+  end
 
   create_table "pain_entries", :force => true do |t|
     t.integer  "user_id"

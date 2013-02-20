@@ -1,18 +1,15 @@
 Medical::Application.routes.draw do
   resources :daily_entries
-
+  resources :pain_entries
+  resources :therapy_entries
+  resources :medication_entries
 
   get "periodicals/day"
   get "periodicals/week"
-
   get "periodicals/month"
-
   get "periodicals/year"
 
-  resources :therapy_entries
   resources :days, only: [:index]
-
-  resources :pain_entries
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
