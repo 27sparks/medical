@@ -4,7 +4,7 @@
     %h1.month= "Monatsübersicht #{@date.strftime("%B %Y")}"
 .row
   .span9.greybox
-    #month-pain-chart
+    #monthly-board
     -@kind = "pain"
 
 .navbar
@@ -24,4 +24,4 @@
         %i.icon-forward
         
 %script{ type: "text/javascript" }
-  $("#month-pain-chart").monthPainChart(["#{@date}", "#{@date.end_of_month.day}", "#{@kind}"])
+  $("#monthly-board").monthPainChart(["#{@date}", "#{@date.end_of_month.day}", "#{@kind}"])

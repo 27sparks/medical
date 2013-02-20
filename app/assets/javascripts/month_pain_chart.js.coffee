@@ -21,13 +21,13 @@
           source = $(this).attr('data-source')
           attr = $(this).attr('data-attr')
           url = "/" + source + ".json?date="+ options[0]
-          $('#month-pain-chart').html('')
+          $('#monthly-board').html('')
           add_chart(url, days_in_month, attr)
           
     add_chart= (url, days_in_month, attr)->
       d3.json url, (json)->
         value_by_day = group_value_by_day(json, attr)
-        barWidth = ($("#month-pain-chart").width() / days_in_month ) - 1
+        barWidth = ($("#monthly-board").width() / days_in_month ) - 1
         barWidth = 15 if barWidth <= 15
         width = (barWidth + 1) * days_in_month - 20
         height = width / 2
@@ -38,7 +38,7 @@
         y = d3.scale.linear().domain([0, d3.max(value_by_day, (datum)-> return datum.value )]).
           rangeRound([0, height])
         
-        chart = d3.select("#month-pain-chart").
+        chart = d3.select("#monthly-board").
           append("svg:svg").
           attr("width", width + padding).
           attr("height", height + padding)
