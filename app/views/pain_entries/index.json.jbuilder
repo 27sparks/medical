@@ -1,5 +1,4 @@
 json.array!(@pain_entries) do |entry|
-
   json.value entry.value 
   json.duration entry.duration
   json.date entry.date

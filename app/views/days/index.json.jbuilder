@@ -3,4 +3,5 @@ json.array!(@daily_entries) do |entry|
   json.pain entry.pain
   json.date entry.date
   json.menstruation entry.menstruation
+  json.weight entry.weight
 end
